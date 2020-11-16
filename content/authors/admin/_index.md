@@ -27,6 +27,7 @@ education:
   courses:
   - course: BS in Electrical Engineering, Minor in Mathematics
     institution: Texas A&M University
+    concentration: Device Science & Nanotechnology, Information Science & Systems
     year: 2017
   - course: Summer Study abroad program in EECS
     institution: USP, São Carlos, Brazil
@@ -67,6 +68,10 @@ user_groups:
 - Researchers
 - Visitors
 ---
+
+Greetings ladies and gentlemen! 👋🏾
+
+My name is Chaance Graves. Welcome to my website where I share my projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to a wide range of problems foreseen in our modern society.
 
 I currently work at Intel Corporation based at their Santa Clara campus in Silicon Valley, California as a Datacenter Platform Applications Engineer since July 2017.
 
