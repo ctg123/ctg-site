@@ -10,7 +10,7 @@ role: Systems Engineer
 
 # Organizations/Affiliations
 organizations:
-- name: Intel Corporation.
+- name: Intel Corporatio
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
