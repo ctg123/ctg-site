@@ -26,7 +26,7 @@ interests:
 education:
   courses:
   - course: BS in Electrical Engineering, Minor in Mathematics
-    institution: [Texas A&M University](https://engineering.tamu.edu/electrical/index.html)
+    institution: Texas A&M University
     concentration: Device Science & Nanotechnology, Information Science & Systems
     year: 2017
   - course: Summer Study abroad program in EECS
