@@ -1,37 +1,36 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Chaance Graves
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Systems Engineer
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
+- name: Intel Corporation.
   url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: I'm a creative engineer and open source enthusiast. The objective of my portfolio/blog is to inspire all things involved in STEAM.
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Systems Engineering 💡
+- Computer Architecture
+- Artificial Intelligence (Machine Learning)
+- Wireless Communications (IoT)
+- Renewable Energy systems
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: BS in Electrical Engineering, Minor in Mathematics
+    institution: Texas A&M University
+    year: 2017
+  - course: Summer Study abroad program in EECS
+    institution: USP, São Carlos, Brazil
+    year: 2015
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -49,7 +48,7 @@ social:
   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/ctg123
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
@@ -69,6 +68,11 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I currently work at Intel Corporation based at their Santa Clara campus in Silicon Valley, California as a Datacenter Platform Applications Engineer since July 2017.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I provide technical support and expertise for Intel server CPU’s and server board design development for customers such as Facebook, Google, Amazon Web Services, etc. My primary OEM customer designs cloud computing server systems for companies such as Verizon Media (formerly Yahoo!), Apple, Dropbox, and Amazon Web Services (AWS).
+
+My journey so far has me serving customers and fellow colleagues within the tech industry from different geographic regions on a global scale including U.S., Mexico, China, Taiwan, and Japan. I’ve also served as an Intel recruiting representative for the Datacenter Group for my Alma mater Texas A&M University, Prairie View, and at NSBE annual conventions.
+
+I mentor high school students from underrepresented communities in Oakland, CA to teach and inspire them to pursue careers in STEM. I always strive to be an advocate and give back to others who aspire to follow a path like mine.
+
