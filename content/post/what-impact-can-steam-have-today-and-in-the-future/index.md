@@ -1,7 +1,7 @@
 ---
 title: What impact can STEAM have today and in the future?
 subtitle: Looking forward to a brighter future
-date: 2020-12-26T19:10:06.867Z
+date: 2020-12-26T20:33:34.439Z
 summary: This arcticle summarizes some of my thoughts on how the a STEAM
   centered mindset can help with broader societal problems.
 draft: false
