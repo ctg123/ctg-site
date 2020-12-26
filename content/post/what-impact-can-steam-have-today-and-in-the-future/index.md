@@ -14,7 +14,7 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-<!--StartFragment-->
+> <!--StartFragment-->
 
 Hey Folks!
 
@@ -44,7 +44,7 @@ So…How can you and I get STEAMEEE and fired up 🔥🔥🔥?
 
 **Economic empowerment/Entrepreneurship** - Learn how to use all the knowledge accessible to decide where your skills can aid with your personal goals of wealth. As an innovator, this can help sharpen your mindset towards your financial goals.You can also turn your passions into a business if you choose to.
 
-Investing to actualize financial freedom for generations is a journey. We can apply a “fail fast methodology” that encourages learning from trial and error and quickly identifying where your particular niche idea fits with the customers you’re seeking to serve. Anticipate building perseverance, patience and focus throughout this process. As adults, according to Dale Carnegie’s observations (author of ***How to Win Friends and Influence People**)* is that we consistently seek out learning how to master these areas, often when it needs critical attention:
+Investing to actualize financial freedom for generations is a journey. We can apply a “fail fast methodology” that encourages learning from trial and error and quickly identifying where your particular niche idea fits with the customers you’re seeking to serve. Anticipate building perseverance, patience and focus throughout this process. As adults, according to Dale Carnegie’s observations (author of **\*How to Win Friends and Influence People**)* is that we consistently seek out learning how to master these areas, often when it needs critical attention:
 
 * manage finances
 * obtain wealth
