@@ -14,8 +14,6 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-> <!--StartFragment-->
-
 Hey Folks!
 
 In this blog post, I’ll some of my thoughts about what STEAM is all about and a brief breakdown and summary of applications I think are worthwhile to consider. I’m sure you’re aware that STEAM covers a significant amount of career fields and activities, so we can focus on a more specific approach that would be good to inform a beginner.
