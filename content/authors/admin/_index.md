@@ -11,7 +11,7 @@ interests:
 social:
   - icon: envelope
     icon_pack: fas
-    link: chaance.graves@ctginnovations.io
+    link: contact/
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/chaancegraves/
