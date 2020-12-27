@@ -2,7 +2,7 @@
 name = "Custom"
 
 # Optional Google font URL
-google_fonts = "Roboto|Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono"
+google_fonts = "Ubuntu|Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono"
 
 # Font families
 heading_font = "Montserrat"
