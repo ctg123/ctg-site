@@ -1,72 +1,42 @@
 ---
-# Display name
-title: Chaance Graves
-
-# Is this the primary user of the site?
-superuser: true
-
-# Role/position
 role: Systems Engineer
-
-# Organizations/Affiliations
-organizations:
-- name: Intel Corporation
-  url: ""
-
-# Short bio (displayed in user profile at end of posts)
-bio: I'm a creative engineer and open source enthusiast. The objective of my portfolio/blog is to inspire all things involved in STEAM.
-
+bio: I'm a creative engineer and open source enthusiast. The objective of my
+  portfolio/blog is to inspire all things involved in STEAM.
 interests:
-- Systems Engineering 💡
-- Computer Architecture
-- Artificial Intelligence (Machine Learning)
-- Wireless Communications (IoT)
-- Renewable Energy systems
-
+  - Systems Engineering 💡
+  - Computer Architecture
+  - Artificial Intelligence (Machine Learning)
+  - Wireless Communications (IoT)
+  - Renewable Energy systems
+social:
+  - icon: envelope
+    icon_pack: fas
+    link: chaance.graves@ctginnovations.io
+  - icon: linkedin
+    icon_pack: fab
+    link: https://www.linkedin.com/in/chaancegraves/
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/ctg123
+organizations:
+  - name: Intel Corporation
+    url: ""
 education:
   courses:
-  - course: BS in Electrical Engineering, Minor in Mathematics
-    institution: Texas A&M University
-    concentration: Device Science & Nanotechnology, Information Science & Systems
-    year: 2017
-  - course: Summer Study abroad program in EECS
-    institution: USP, São Carlos, Brazil
-    year: 2015
-
-# Social/Academic Networking
-# For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
-#   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "#contact" for contact widget.
-social:
-- icon: envelope
-  icon_pack: fas
-  link: '/#contact'  # For a direct email link, use "mailto:chaance.graves@ctginnovations.io".
-- icon: linkedin
-  icon_pack: fab
-  link: https://www.linkedin.com/in/chaancegraves/
-#- icon: google-scholar
-#  icon_pack: ai
-#  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
-- icon: github
-  icon_pack: fab
-  link: https://github.com/ctg123
-# Link to a PDF of your resume/CV from the About widget.
-# To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: files/cv.pdf
-
-# Enter email to display Gravatar (if Gravatar enabled in Config)
-email: ""
-
-# Highlight the author in author lists? (true/false)
-highlight_name: false
-
-# Organizational groups that you belong to (for People widget)
-#   Set this to `[]` or comment out if you are not using People widget.
+    - course: BS in Electrical Engineering, Minor in Mathematics
+      institution: Texas A&M University
+      concentration: Device Science & Nanotechnology, Information Science & Systems
+      year: 2017
+    - course: Summer Study abroad program in EECS
+      institution: USP, São Carlos, Brazil
+      year: 2015
+superuser: true
 user_groups:
-- Researchers
-- Visitors
+  - Researchers
+  - Visitors
+highlight_name: false
+title: Chaance Graves
+email: chaanceg123@gmail.com
 ---
 
 Greetings ladies and gentlemen! 👋🏾
