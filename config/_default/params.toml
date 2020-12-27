@@ -117,7 +117,7 @@ appointment_url = "https://calendly.com"
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
-  #{icon = "twitter", icon_pack = "fab", name = "DM Me", link = "https://twitter.com/Twitter"}, # New Twitter account WIP.
+  #{icon = "twitter", icon_pack = "fab", name = "Find me on Twitter", link = "https://twitter.com/Twitter"}, # New Twitter account WIP.
   #{icon = "skype", icon_pack = "fab", name = "Skype Me", link = "skype:echo123?call"},
   #{icon = "keybase", icon_pack = "fab", name = "Chat on Keybase", link = "https://keybase.io/"},
   #{icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://discourse.gohugo.io"},
@@ -218,14 +218,14 @@ plugins_css = []
   #   0: Disabled
   #   1: Disqus (https://disqus.com)
   #   2: Commento (https://commento.io)
-  engine = 0
+  engine = 1 # Disqus
 
   # Which page types are commentable?
   commentable = {page = true, post = true, docs = true, project = true, publication = true, talk = true}
 
   # Configuration of Disqus.
   [comments.disqus]
-    shortname = ""  # Paste the shortname from your Disqus dashboard.
+    shortname = "Chaance Graves' portfolio/blog"  # Paste the shortname from your Disqus dashboard.
     show_count = true  # Show comment count in page header? (true/false)
 
   # Configuration of Commento.
@@ -277,7 +277,7 @@ plugins_css = []
 ## Marketing
 ############################
 [marketing]
-  google_analytics = "" # Add Google Analytics
+  google_analytics = "UA-143419712-1" 
   google_tag_manager = ""
 
 ############################
