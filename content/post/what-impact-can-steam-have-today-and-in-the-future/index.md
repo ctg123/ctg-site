@@ -6,8 +6,7 @@ summary: This article summarizes some of my thoughts on how the a STEAM centered
   mindset can help with broader societal problems.
 draft: false
 featured: false
-authors:
-  - Chaance
+authors: []
 categories: []
 image:
   filename: featured
