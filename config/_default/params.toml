@@ -117,11 +117,13 @@ appointment_url = "https://calendly.com"
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
 contact_links = [
+  {icon = "envelope", icon_pack = "fab", name = "Email", link = "#contact"}, # Email Address
   #{icon = "twitter", icon_pack = "fab", name = "Find me on Twitter", link = "https://twitter.com/Twitter"}, # New Twitter account WIP.
   #{icon = "skype", icon_pack = "fab", name = "Skype Me", link = "skype:echo123?call"},
   #{icon = "keybase", icon_pack = "fab", name = "Chat on Keybase", link = "https://keybase.io/"},
   #{icon = "comments", icon_pack = "fas", name = "Discuss on Forum", link = "https://discourse.gohugo.io"},
-  # {icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Telegram"}, # Telegram account WIP
+  #{icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Telegram"}, # Telegram account WIP
+  
   ]
 
 ############################
@@ -185,7 +187,7 @@ plugins_css = []
 # An avatar can be uploaded as an image named `avatar` to each user's profile or fetched from Gravatar.com.
 [avatar]
   # Get user avatars from Gravatar.com? (true/false)
-  gravatar = true
+  gravatar = false
 
   # Choose a shape for avatar images. Options: circle, square.
   shape = "circle"
