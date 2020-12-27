@@ -7,9 +7,9 @@ widget: contact
 headless: true
 
 # Order that this section appears on the page.
-weight: 130
+weight: 70 #130
 
-title: "Contact Me"
+title: Contact Me
 subtitle: ""
 
 content:
@@ -17,13 +17,13 @@ content:
   autolink: true
   
   # Email form provider
-  form:
-    provider: formspree
-    formspree:
-      id: mqkggdgo
-    netlify:
-      # Enable CAPTCHA challenge to reduce spam?
-      captcha: true
+  # form:
+  #  provider: formspree
+  #  formspree:
+  #    id: mqkggdgo
+  #  netlify:
+  #    # Enable CAPTCHA challenge to reduce spam?
+  #    captcha: true
   
 design:
   columns: '2'
