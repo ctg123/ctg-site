@@ -20,7 +20,7 @@ content:
   form:
     provider: formspree
     formspree:
-      id: chaance.graves@ctginnovations.io
+      id: mqkggdgo
     netlify:
       # Enable CAPTCHA challenge to reduce spam?
       captcha: true
