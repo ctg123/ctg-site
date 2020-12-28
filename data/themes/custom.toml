@@ -1,3 +1,9 @@
+#----------------------------#
+# Color conversion: 
+# Royal Blueish: (#292ff)
+# Maroccan Blueish: (#328cc1)
+#----------------------------#
+
 # Theme metadata
 name = "custom"
 
@@ -5,14 +11,14 @@ name = "custom"
 light = true
 
 # Primary
-primary = "#328cc1"
-primary_light = "#328cc1"
+primary = "#292ff"  
+primary_light = "#292ff"
 primary_dark = "#DA2536"
 
 # Menu
 menu_primary = "#494949"
 menu_text = "#fff"
-menu_text_active = "#328cc1"
+menu_text_active = "#292ff"
 menu_title = "#fff"
 
 # Backgrounds
