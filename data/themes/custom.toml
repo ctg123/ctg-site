@@ -1,6 +1,6 @@
 #----------------------------#
 # Color conversion: 
-# Royal Blueish: (#292ff)
+# Royal Blueish: (#2962ff)
 # Maroccan Blueish: (#328cc1)
 #----------------------------#
 
@@ -11,14 +11,14 @@ name = "custom"
 light = true
 
 # Primary
-primary = "#292ff"  
-primary_light = "#292ff"
+primary = "#2962ff"  
+primary_light = "#2962ff"
 primary_dark = "#DA2536"
 
 # Menu
 menu_primary = "#494949"
 menu_text = "#fff"
-menu_text_active = "#292ff"
+menu_text_active = "#2962ff"
 menu_title = "#fff"
 
 # Backgrounds
