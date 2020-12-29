@@ -24,6 +24,10 @@ feature:
   icon: python
   icon_pack: fab
   name: Python
+- description: Proficient
+  icon: c-programming
+  icon_pack: custom
+  name: C/C++
 - description: Basic
   icon: node-js
   icon_pack: fab
@@ -32,6 +36,10 @@ feature:
   icon: java
   icon_pack: fab
   name: Java
+- description: Beginner
+  icon: go-programming
+  icon_pack: custom
+  name: Go
 - description: Proficient
   icon: terminal
   icon_pack: fas
@@ -52,7 +60,14 @@ feature:
   icon: aws
   icon_pack: fab
   name: Amazon Web Services
-
+- descripton: Proficient
+  icon: mobo-design
+  icon_pack: custom
+  name: PCB Design + Electronics Protoyping
+- descrpiton: Proficient
+  icon: team-lead
+  icon_pack: custom
+  name: Team Leadership
 
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
