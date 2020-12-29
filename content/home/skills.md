@@ -15,19 +15,48 @@ subtitle:
 # Showcase personal skills or business features.
 # - Add/remove as many `feature` blocks below as you like.
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
+
+# Add custom C/C++ svg icon to feature.
+# Add Go svg icon to feature
+
 feature:
-- description: 90%
-  icon: r-project
+- description: Proficient
+  icon: python
   icon_pack: fab
-  name: R
-- description: 100%
-  icon: chart-line
+  name: Python
+- description: Basic
+  icon: node-js
+  icon_pack: fab
+  name: Node.js
+- description: Basic
+  icon: Java
+  icon_pack: fab
+  name: Java
+- description: Proficient
+  icon: terminal
   icon_pack: fas
-  name: Statistics
-- description: 10%
-  icon: camera-retro
-  icon_pack: fas
-  name: Photography
+  name: Bash/Shell Scripting
+- description: Proficient
+  icon: git-alt
+  icon_pack: fab
+  name: Git
+- description: Proficient
+  icon: git-alt
+  icon_pack: fab
+  name: Git
+- description: Basic
+  icon: Jenkins
+  icon_pack: fab
+  name: Jenkins (CI/CD)
+- description: Proficient
+  icon: docker
+  icon_pack: fab
+  name: Docker
+- description: Basic
+  icon: aws
+  icon_pack: fab
+  name: Amazon Web Services
+
 
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
