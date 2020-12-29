@@ -25,8 +25,8 @@ feature:
   icon_pack: fab
   name: Python
 - description: Proficient
-  icon: c-programming
-  icon_pack: custom
+  icon: "c-programming"
+  icon_pack: "custom"
   name: C/C++
 - description: Basic
   icon: node-js
@@ -61,12 +61,12 @@ feature:
   icon_pack: fab
   name: Amazon Web Services
 - descripton: Proficient
-  icon: mobo-design
-  icon_pack: custom
+  icon: "mobo-design"
+  icon_pack: "custom"
   name: PCB Design + Electronics Protoyping
 - descrpiton: Proficient
-  icon: team-lead
-  icon_pack: custom
+  icon: "team-lead"
+  icon_pack: "custom"
   name: Team Leadership
 
 # Uncomment to use emoji icons.
