@@ -28,15 +28,9 @@ date_format = "Jan 2006"
 
   * Led interface of board design, Power-On, and enabling of hyperscale systems used for AI training and Big Data analytics.
 
-      
-
   * Earned Net Promoter Score (NPS) of 75% or higher for customer responsiveness, clarity of communicating results and problem solving.  
 
-      
-
   * Led integration tests and end-to-end execution of a cloud-based Xeon-SP provisioning feature.  
-
-      
 
   * Developed test suites and scripting automation tools for lab infrastructure and remote debugging tools.  
 
@@ -52,9 +46,6 @@ date_format = "Jan 2006"
   description = """
 
 * Developed use cases for optical wireless techniques (Laser/LED) for future IoT (Internet of Things) applications.
-
-  
-
 * Designed complete Optical Wireless Communications system and developed simulations and experiments for testing in MATLAB and Python.  
 
 """
