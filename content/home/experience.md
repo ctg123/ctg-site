@@ -32,7 +32,7 @@ experience:
     description: |2-
         Responsibilities and milestones include:
         
-        * Lead interface of board design, Power-On, and enabling of hyperscale systems used for AI training and Big Data analytics. \n
+        * Lead interface of board design, Power-On, and enabling of hyperscale systems used for AI training and Big Data analytics.
         * Earned Net Promoter Score (NPS) of 75% or higher for customer responsiveness, clarity of communicating results and problem solving.
         * Led integration tests and end-to-end execution of a cloud-based Xeon-SP provisioning feature.
         * Developed test suites and scripting automation tools for lab infrastructure and remote debugging tools.
