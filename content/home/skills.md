@@ -29,7 +29,7 @@ feature:
   icon_pack: fab
   name: Node.js
 - description: Basic
-  icon: Java
+  icon: java
   icon_pack: fab
   name: Java
 - description: Proficient
@@ -40,12 +40,8 @@ feature:
   icon: git-alt
   icon_pack: fab
   name: Git
-- description: Proficient
-  icon: git-alt
-  icon_pack: fab
-  name: Git
 - description: Basic
-  icon: Jenkins
+  icon: jenkins
   icon_pack: fab
   name: Jenkins (CI/CD)
 - description: Proficient
