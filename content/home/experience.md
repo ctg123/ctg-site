@@ -19,7 +19,7 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
   title = "Xeon Platform Applications Engineer"
-  company = ![Intel logo](/assets/images/intel-logo.png "Intel Corporation")
+  company = "Intel Corporation"
   company_url = "https://www.intel.com"
   location = "Santa Clara, California"
   date_start = "2017-07-01"
