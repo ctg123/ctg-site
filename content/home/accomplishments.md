@@ -22,6 +22,7 @@ date_format: Jan 2006
 #   `title`, `organization`, and `date_start` are the required parameters.
 #   Leave other parameters empty if not required.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
+
 item:
 - certificate_url:
   date_end: "2017-05-01"
@@ -32,11 +33,11 @@ item:
   title: Electrical Engineering B.S. Diploma
   url: https://www.scribd.com/document/489489958/Chaance-Graves-BS-EE-diploma?secret_password=ZdpOhoeD7u0d4ayDeTMR
 
-- certificate_url: https://www.edx.org
+- certificate_url:
   date_end: "2017-05-01"
   date_start: "2016-08-01"
   description: Thesis written about the secure exchange process of data and experimentation of an Optical communications system.
-  organization: Texas A&M University
+  organization: TAMU Undergraduate Reseach Scholars 
   organization_url: https://launch.tamu.edu/Undergraduate-Research/URS
   title: Ungraduate Reseach Shcolars (Thesis)
   url: https://www.scribd.com/document/489491834/Chaance-Graves-URSP-Thesis?secret_password=eT0mcveqyiEWCNECCyH1
