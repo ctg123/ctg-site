@@ -72,7 +72,7 @@ feature:
 
 - icon: "mobo-design"
   icon_pack: "custom"
-  name: PCB Design + Electronics Prototyping
+  name: PCB Design + Electronics
   description: Proficient
 
 # Uncomment to use emoji icons.
