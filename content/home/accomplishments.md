@@ -29,17 +29,17 @@ item:
   description: "Specialized in Device Science/Nanotechnology and Information Science Systems focus."
   organization: Texas A&M University
   organization_url: https://engineering.tamu.edu/electrical/index.html
-  title: BS Electrical Engineering Diploma
+  title: Electrical Engineering B.S. Diploma
   url: https://www.scribd.com/document/489489958/Chaance-Graves-BS-EE-diploma?secret_password=ZdpOhoeD7u0d4ayDeTMR
 
 - certificate_url: https://www.edx.org
-  date_end: ""
-  date_start: "2018-03-01"
-  description: Formulated informed blockchain models, hypotheses, and use cases.
-  organization: edX
-  organization_url: https://www.edx.org
-  title: Blockchain Fundamentals
-  url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
+  date_end: "2017-05-01"
+  date_start: "2016-08-01"
+  description: Thesis written about the secure exchange process of data and experimentation of an Optical communications system.
+  organization: Texas A&M University
+  organization_url: https://launch.tamu.edu/Undergraduate-Research/URS
+  title: Ungraduate Reseach Shcolars (Thesis)
+  url: https://www.scribd.com/document/489491834/Chaance-Graves-URSP-Thesis?secret_password=eT0mcveqyiEWCNECCyH1
 
 - certificate_url: https://www.datacamp.com
   date_end: "2017-12-21"
