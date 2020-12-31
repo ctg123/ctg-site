@@ -20,60 +20,66 @@ subtitle:
 # Add Go svg icon to feature
 
 feature:
-- description: Proficient
-  icon: python
+- icon: python
   icon_pack: fab
   name: Python
-- description: Proficient
-  icon: "c-programming"
+  description: Proficient
+
+- icon: "c-programming"
   icon_pack: "custom"
   name: C/C++
-- description: Basic
-  icon: node-js
+  description: Proficient
+
+- icon: node-js
   icon_pack: fab
   name: Node.js
-- description: Basic
-  icon: java
+  description: Basic
+
+- icon: java
   icon_pack: fab
   name: Java
-- description: Beginner
-  icon: go-programming
+  description: Basic
+
+- icon: go-programming
   icon_pack: custom
   name: Go
-- description: Proficient
-  icon: terminal
+  description: Beginner
+
+- icon: terminal
   icon_pack: fas
   name: Bash/Shell Scripting
-- description: Proficient
-  icon: git-alt
+  description: Proficient
+
+- icon: git-alt
   icon_pack: fab
   name: Git
-- description: Basic
-  icon: jenkins
+  description: Proficient
+
+- icon: jenkins
   icon_pack: fab
   name: Jenkins (CI/CD)
-- description: Proficient
-  icon: docker
+  description: Basic
+
+- icon: docker
   icon_pack: fab
   name: Docker
-- description: Basic
-  icon: aws
+  description: Proficient
+
+- icon: aws
   icon_pack: fab
   name: Amazon Web Services
-- descripton: Proficient
-  icon: "mobo-design"
+  description: Basic
+
+- icon: "mobo-design"
   icon_pack: "custom"
-  name: PCB Design + Electronics Protoyping
-- descrpiton: Proficient
-  icon: "team-lead"
-  icon_pack: "custom"
-  name: Team Leadership
+  name: PCB Design + Electronics Prototyping
+  description: Proficient
 
 # Uncomment to use emoji icons.
-#- icon: ":smile:"
-#  icon_pack: "emoji"
-#  name: "Emojiness"
-#  description: "100%"  
+- icon: "🥇"
+  icon_pack: "emoji"
+  name: "Leadership"
+  description: "Proficient"  
 
 # Uncomment to use custom SVG icons.
 # Place custom SVG icon in `assets/images/icon-pack/`, creating folders if necessary.
