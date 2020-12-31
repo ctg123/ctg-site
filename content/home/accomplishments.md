@@ -23,14 +23,15 @@ date_format: Jan 2006
 #   Leave other parameters empty if not required.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
-- certificate_url: https://www.coursera.org
-  date_end: ""
-  date_start: "2018-10-01"
-  description: ""
-  organization: Coursera
-  organization_url: https://www.coursera.org
-  title: Neural Networks and Deep Learning
-  url: ""
+- certificate_url:
+  date_end: "2017-05-01"
+  date_start: "2012-08-01"
+  description: "Specialized in Device Science/Nanotechnology and Information Science Systems focus."
+  organization: Texas A&M University
+  organization_url: https://engineering.tamu.edu/electrical/index.html
+  title: BS Electrical Engineering Diploma
+  url: https://www.scribd.com/document/489489958/Chaance-Graves-BS-EE-diploma?secret_password=ZdpOhoeD7u0d4ayDeTMR
+
 - certificate_url: https://www.edx.org
   date_end: ""
   date_start: "2018-03-01"
@@ -39,6 +40,7 @@ item:
   organization_url: https://www.edx.org
   title: Blockchain Fundamentals
   url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
+
 - certificate_url: https://www.datacamp.com
   date_end: "2017-12-21"
   date_start: "2017-07-01"
