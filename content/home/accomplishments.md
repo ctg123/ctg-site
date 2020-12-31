@@ -42,12 +42,12 @@ item:
   title: Ungraduate Reseach Shcolars (Thesis)
   url: https://www.scribd.com/document/489491834/Chaance-Graves-URSP-Thesis?secret_password=eT0mcveqyiEWCNECCyH1
 
-- certificate_url: https://www.datacamp.com
-  date_end: "2017-12-21"
-  date_start: "2017-07-01"
-  description: ""
-  organization: DataCamp
-  organization_url: https://www.datacamp.com
-  title: 'Object-Oriented Programming in R: S3 and R6 Course'
+- certificate_url: https://www.scribd.com/document/489492563/AI-Expo-IEEE-PDH-certificate?secret_password=2n5CayA6h9LUbPld1LY6
+  date_end: "2020-11-19"
+  date_start: "2020-09-01"
+  description: "Virtual and global series of presentations and discussions centered around the evolution and practical applications of Enterprise AI, AI Robotics, and AI Hardware, etc."
+  organization: ValleyML.ai
+  organization_url: https://www.valleyml.ai
+  title: 'ValleyML AI Expo 2020'
   url: ""
 ---
