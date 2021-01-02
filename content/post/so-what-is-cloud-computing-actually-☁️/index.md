@@ -33,7 +33,7 @@ The are Three primary delivery models in which Cloud computing can provide diffe
 
 You can see how the services are built on top of each other in the diagram below. It provides a great summary of what goes on underneath the hood of it all!
 
-![](img/cloud-services.png "cloud computing stack")
+
 
 **SaaS - Software as a Service**
 
