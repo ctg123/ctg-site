@@ -1,18 +1,21 @@
 ---
-title: So what is cloud computing actually? ☁️
-subtitle: What's happening under the hood of cloud computing. We cover the key
-  concepts and services available today.
+# Documentation: https://sourcethemes.com/academic/docs/managing-content/
+
+title: "So what is cloud computing actually? ☁️"
+subtitle: "What's happening under the hood of cloud computing. We cover the key concepts and services available today."
+summary: "This article is a concise summary of what's happening under the hood of cloud computing. We cover the key concepts and services available today."
 date: 2020-03-04T08:00:00.000Z
-summary: This article is a concise summary of what's happening under the hood of
-  cloud computing. We cover the key concepts and services available today.
+featured: true
 draft: false
-featured: false
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
-  filename: featured
-  focal_point: Smart
+  caption: "Cloud Computing"
+  focal_point: "smart"
   preview_only: false
 ---
-<!--StartFragment-->
 
 Hi Folks!
 
@@ -29,7 +32,7 @@ Some of the cloud computing features include the following:
 
 The are Three primary delivery models in which Cloud computing can provide different services based on their unique configuration characteristics. You can see in the illustration below how a typical Cloud service provider organizes their SaaS, PaaS, IaaS services. The figure on the right shows what end customers pay for and what Cloud service providers will manage as the host vendor.
 
-![](cloud-computing-illustration.png "cloud computing illustration")
+![cloud computing illustration](img/cloud-computing-illustration.png)
 
 You can see how the services are built on top of each other in the diagram below. It provides a great summary of what goes on underneath the hood of it all!
 
@@ -70,5 +73,3 @@ IaaS providers offer the following products and services: Amazon EC2, Go Grid, a
 New applications are coming to life at a rapid pace all over the internet and the Cloud is no doubt a reason for it. You can expect cloud computing to be on the rise well into the next decade. This is only scratching the surface on what is possible. Who knows what will come next?
 
 \- Chaance
-
-<!--EndFragment-->
