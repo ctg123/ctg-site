@@ -17,15 +17,13 @@ Hey Folks!
 
 In this blog post, I’ll share some of my thoughts about what STEAM is all about and a concise summary of applications I think are worthwhile to consider. I’m sure you’re aware that STEAM covers a significant amount of career fields and activities, so we can focus on a more specific approach that would be good to inform a beginner.
 
-![](cloud-services.png "cloud services")
-
 The famous NASA physicist & mathematician, Katherine Johnson, provided a great summarizing quote of these principles in my opinion.
 
 > We will always have STEM with us. Some things will drop out of the public eye and will go away, but there will always be science, engineering, and technology. And there will always, always be mathematics.
 >
 > \- *Katherine Johnson*
 
-#### The S.T.E.A.M.EE principles
+## The S.T.E.A.M.EE principles
 
 This acronym is one I use to help me reinforce the practical skills needed to apply the STEAM (Science, Technology, Engineering, Arts, Math) principles. I always reflect on these ideas to see where any impact can be made towards economic empowerment, environmental sustainability, and equity.
 
@@ -56,14 +54,12 @@ It is becoming more imperative that these lessons be taught at an early age.
 
 **Equity** - The reality of the state of the world is that it is not fair among opportunities and access to common valuable resources. My recommendation is to every action count towards shaping the world to become a fair playing field. The role you play at any stage has a tremendous opportunity to bridge that gap.
 
-Who knows where greatness can emerge? We need to be honest about how the past influenced our current state of affairs.
 
-![](cloud-computing-illustration.png "cloud computing overview")
 
-This is barely touching on what can be said about this topic. Feel free to share any thoughts, or things I’ve missed or been unclear about.
+## Closing Thoughts
+
+Who knows where greatness can emerge? We need to be honest about how the past influenced our current state of affairs. This is barely touching on what can be said about this topic. Feel free to share any thoughts, or things I’ve missed or been unclear about.
 
 All the best!
 
 \- Chaance
-
-<!--EndFragment-->
