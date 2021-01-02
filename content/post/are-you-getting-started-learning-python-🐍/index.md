@@ -18,13 +18,15 @@ This is actually more a personal preference depending on what the project and so
 
 There are likely millions of developers around the world using Python to build projects, tools, and using it to teach others the fundamentals of programming. You can do all kinds of other amazing work in a multitude of domains.
 
+![](cloud-computing-illustration.png "cloud computing overview")
+
 #### Example applications:
 
-- Web applications
-- Machine Learning / Deep learning
-- Automating weekly emails
-- Setting up jobs to update a spreadsheet
-- etc....
+* Web applications
+* Machine Learning / Deep learning
+* Automating weekly emails
+* Setting up jobs to update a spreadsheet
+* etc....
 
 #### Helpful online resources & books
 
