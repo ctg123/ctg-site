@@ -58,6 +58,8 @@ It is becoming more imperative that these lessons be taught at an early age.
 
 Who knows where greatness can emerge? We need to be honest about how the past influenced our current state of affairs.
 
+![](cloud-computing-illustration.png "cloud computing overview")
+
 This is barely touching on what can be said about this topic. Feel free to share any thoughts, or things I’ve missed or been unclear about.
 
 All the best!
