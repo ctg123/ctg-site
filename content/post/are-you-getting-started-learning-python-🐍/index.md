@@ -3,6 +3,8 @@ title: Are you getting started learning Python? 🐍
 subtitle: Resources for effectively learning one of the most popular programming
   languages
 date: 2020-01-20T20:18:44.322Z
+summary: Resources for effectively learning one of the most popular programming
+  languages.
 draft: false
 featured: false
 image:
