@@ -31,7 +31,7 @@ So…How can you and I get STEAMEEE and fired up 🔥🔥🔥?
 
 **S (Science)** - Science is the knowledge domain that encourages asking and seeking to understand how our world works, and what areas spark our interest. Some examples include physical and life sciences, computer science, and interdisciplinary case studies.
 
-**T (Technology)** - Understanding how technology can be leveraged as a powerful medium to develop and collaborate among the communities to truly build something worthwhile and beneficial to society and our environment. (Examples: semiconductor tech, material science, cloud based services, Artificial Intelligence, etc…)
+**T (Technology)** - Understanding how technology can be leveraged as a powerful medium to develop and collaborate among the communities to truly build something worthwhile and beneficial to society and our environment. Some of these examples include semiconductor technologies, material science, Cloud Native microservices, Artificial Intelligence, etc.
 
 **E (Engineering)** - The practical arm to build and put ideas into reality within creative designs that can co-exist in either the physical or digital world or both. These products and services would help innovators learn to own their inventions and look for their Intellectual Property to patent protected. Additionally, a healthy understanding of users feedback would always fuel engineers to provide better, more meaningful solutions as needs and demand change over time.
 
