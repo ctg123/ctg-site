@@ -3,6 +3,8 @@ title: So what is cloud computing actually? ☁️
 subtitle: What's happening under the hood of cloud computing. We cover the key
   concepts and services available today.
 date: 2020-03-04T08:00:00.000Z
+summary: This article is a concise summary of what's happening under the hood of
+  cloud computing. We cover the key concepts and services available today.
 draft: false
 featured: false
 image:
