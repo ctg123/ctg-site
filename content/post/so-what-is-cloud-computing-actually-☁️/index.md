@@ -24,3 +24,5 @@ Some of the cloud computing features include the following:
 * ***Scalability*** – The ability of a computer system to adapt to increasing demands.
 
 The are Three primary delivery models in which Cloud computing can provide different services based on their unique configuration characteristics. You can see in the illustration below how a typical Cloud service provider organizes their SaaS, PaaS, IaaS services. The figure on the right shows what end customers pay for and what Cloud service providers will manage as the host vendor.
+
+![](cloud-computing-illustration.png "cloud computing overview")
