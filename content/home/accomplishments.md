@@ -50,4 +50,16 @@ item:
   organization_url: https://www.valleyml.ai
   title: 'ValleyML AI Expo 2020'
   url: ""
+
+- certificate_url: https://www.scribd.com/document/489613627/MIT-AI-Business-Strategy?secret_password=4VvgMDqInQU5yqUt2Dxg
+  date_end: "2018-07-20"
+  date_start: "2018-05-30"
+  description: "This certification covers in depth business strategies of how AI impacts various industries, the current innovations and future of Artificial Intelligence."
+  organization: MIT Sloan & MIT CSAIL Artificial Intelligence
+  organization_url: https://cap.csail.mit.edu/
+  title: 'ValleyML AI Expo 2020'
+  url: "Artificial Intelligence: Implications for business strategy program"
 ---
+
+
+
