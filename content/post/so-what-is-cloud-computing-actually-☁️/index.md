@@ -1,22 +1,17 @@
 ---
-# Documentation: https://sourcethemes.com/academic/docs/managing-content/
-
-title: "So what is cloud computing actually? ☁️"
-subtitle: "What's happening under the hood of cloud computing. We cover the key concepts and services available today."
-summary: "This article is a concise summary of what's happening under the hood of cloud computing. We cover the key concepts and services available today."
+title: So what is cloud computing actually? ☁️
+subtitle: What's happening under the hood of cloud computing. We cover the key
+  concepts and services available today.
 date: 2020-03-04T08:00:00.000Z
-featured: true
+summary: This article is a concise summary of what's happening under the hood of
+  cloud computing. We cover the key concepts and services available today.
 draft: false
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+featured: true
 image:
-  caption: "Cloud Computing"
-  focal_point: "smart"
+  caption: Cloud Computing
+  focal_point: smart
   preview_only: false
 ---
-
 Hi Folks!
 
 Have you ever wondered – What Is Cloud Computing actually? For example, Are you curious as to how your Google drive or Dropbox is capable of doing what it does?
@@ -32,11 +27,11 @@ Some of the cloud computing features include the following:
 
 The are Three primary delivery models in which Cloud computing can provide different services based on their unique configuration characteristics. You can see in the illustration below how a typical Cloud service provider organizes their SaaS, PaaS, IaaS services. The figure on the right shows what end customers pay for and what Cloud service providers will manage as the host vendor.
 
-![cloud computing illustration](img/cloud-computing-illustration.png)
+![](cloud-computing-illustration.png "cloud computing")
 
 You can see how the services are built on top of each other in the diagram below. It provides a great summary of what goes on underneath the hood of it all!
 
-
+![](cloud-services.png "cloud services")
 
 **SaaS - Software as a Service**
 
