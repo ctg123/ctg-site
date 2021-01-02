@@ -27,7 +27,7 @@ item:
 - certificate_url:
   date_end: "2017-05-01"
   date_start: "2012-08-01"
-  description: "Specialized in Device Science/Nanotechnology and Information Science Systems focus."
+  description: "Specialized in the subject matters related to Device Science/Nanotechnology and Information Science Systems."
   organization: Texas A&M University
   organization_url: https://engineering.tamu.edu/electrical/index.html
   title: B.S. Degree in Electrical Engineering 
