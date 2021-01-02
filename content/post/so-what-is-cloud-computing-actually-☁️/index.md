@@ -29,17 +29,17 @@ Some of the cloud computing features include the following:
 
 The are Three primary delivery models in which Cloud computing can provide different services based on their unique configuration characteristics. You can see in the illustration below how a typical Cloud service provider organizes their SaaS, PaaS, IaaS services. The figure on the right shows what end customers pay for and what Cloud service providers will manage as the host vendor.
 
-![](/static/media/cloud-computing-illustration.png "cloud computing illustration")
+![](img/cloud-computing-illustration.png "cloud computing illustration")
 
 You can see how the services are built on top of each other in the diagram below. It provides a great summary of what goes on underneath the hood of it all!
 
-![](/static/media/cloud-services.png "cloud computing stack")
+![](img/cloud-services.png "cloud computing stack")
 
 **SaaS - Software as a Service**
 
 This service provides on-demand pay per use of the application software for users and is independent of a platform. You do not have to install software on your computer, unlike a license paid program. The cloud runs a single occurrence of the software, making it available for multiple end-users allowing the service to be cheap. All the computing resources that are responsible for delivering SaaS is typically managed completely by the vendor and is accessible through a web browser or lightweight client application(s). End customers ranging from individuals to large companies use SaaS regularly.
 
-The most popular SaaS providers offer the following products and services: Google Ecosystem including Gmail, Google Docs, Google Drive, Microsoft Office 365, and SalesForce.
+The most popular SaaS providers offer the following products and services: Google Ecosystem including Gmail, Google Docs, Google Drive, Microsoft Office 365, and Salesforce.
 
 **PaaS - Platform as a Service**
 
@@ -49,7 +49,7 @@ PaaS providers offer the following products and services: Amazon Web services, E
 
 **IaaS - Infrastructure as a Service**
 
-This service provides the architecture and infrastructure of the cloud. It provides all computing resources but in a virtual environment so multiple users can have access. These resources include data storage, virtualization, servers, and networking. Most of the cloud service providers are responsible for managing them. If you use this service, you are responsible for handling other resources including applications, data, run-time, and middleware. This is mostly work that SysAdmins, or a DevOps/SRE team at a company would focus on.
+This service provides the architecture and infrastructure of the cloud. It provides all computing resources but in a virtual environment so multiple users can have access. These resources include data storage, virtualization, servers, and networking. Most of the cloud service providers are responsible for managing them. If you use this service, you are responsible for handling other resources including applications, data, run-time, and middleware. This is mostly work that Sysadmins, or a DevOps/SRE team at a company would focus on.
 
 IaaS providers offer the following products and services: Amazon EC2, Go Grid, and Rackspace.com.
 

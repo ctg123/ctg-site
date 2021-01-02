@@ -30,7 +30,7 @@ item:
   description: "Specialized in Device Science/Nanotechnology and Information Science Systems focus."
   organization: Texas A&M University
   organization_url: https://engineering.tamu.edu/electrical/index.html
-  title: Electrical Engineering B.S. Diploma
+  title: B.S. Degree in Electrical Engineering 
   url: https://www.scribd.com/document/489489958/Chaance-Graves-BS-EE-diploma?secret_password=ZdpOhoeD7u0d4ayDeTMR
 
 - certificate_url:
@@ -57,8 +57,8 @@ item:
   description: "This certification covers in depth business strategies of how AI impacts various industries, the current innovations and future of Artificial Intelligence."
   organization: MIT Sloan & MIT CSAIL Artificial Intelligence
   organization_url: https://cap.csail.mit.edu/
-  title: 'ValleyML AI Expo 2020'
-  url: "Artificial Intelligence: Implications for business strategy program"
+  title: 'Artificial Intelligence: Implications for business strategy program'
+  url: "https://cap.csail.mit.edu/"
 ---
 
 
