@@ -1,8 +1,10 @@
 ---
 title: What is Cloud Computing actually? ☁️
-subtitle: Summary for cloud computing article
+subtitle: What's happening under the hood of cloud computing. We cover the key
+  concepts and services available today.
 date: 2021-01-02T22:29:22.633Z
-summary: Summary for cloud computing article.
+summary: What's happening under the hood of cloud computing. We cover the key
+  concepts and services available today.
 draft: false
 featured: false
 authors: []
@@ -33,8 +35,6 @@ You can see how the services are built on top of each other in the diagram below
 
 ![](cloud-services.png "cloud services")
 
-<!--StartFragment-->
-
 **SaaS - Software as a Service**
 
 This service provides on-demand pay per use of the application software for users and is independent of a platform. You do not have to install software on your computer, unlike a license paid program. The cloud runs a single occurrence of the software, making it available for multiple end-users allowing the service to be cheap. All the computing resources that are responsible for delivering SaaS is typically managed completely by the vendor and is accessible through a web browser or lightweight client application(s). End customers ranging from individuals to large companies use SaaS regularly.
@@ -53,20 +53,20 @@ This service provides the architecture and infrastructure of the cloud. It provi
 
 IaaS providers offer the following products and services: Amazon EC2, Go Grid, and Rackspace.com.
 
-\--
+- - -
 
 **Short list of major cloud service providers and popular products:**
 
-**\*iCloud\*** – The cloud service from Apple is for Apple products. You can backup and store everything from multimedia to documents online. The content is then smoothly synced onto your other devices that share the cloud's access.
+***iCloud*** – The cloud service from Apple is for Apple products. You can backup and store everything from multimedia to documents online. The content is then smoothly synced onto your other devices that share the cloud's access.
 
-**\*Amazon's AWS\*** - When you talk about companies using cloud computing, Amazon Web Services leads the pack. It offers IaaS and PaaS to all their customers.
+***Amazon's AWS*** - When you talk about companies using cloud computing, Amazon Web Services leads the pack. It offers IaaS and PaaS to all their customers.
 
-**\*Google Cloud\*** – This cloud platform is universal for Google's enormous ecosystem and for other products such as Google Docs. It provides storage of data and collaboration along with other services that are included in their cloud computing suite.
+***Google Cloud*** – This cloud platform is universal for Google's enormous ecosystem and for other products such as Google Docs. It provides storage of data and collaboration along with other services that are included in their cloud computing suite.
 
-**\*Microsoft Azure\*** – Offered by Microsoft, it provides SaaS, PaaS, and IaaS for its software and developer tools. If you have used Office 365, then you have used it's SaaS.
+***Microsoft Azure*** – Offered by Microsoft, it provides SaaS, PaaS, and IaaS for its software and developer tools. If you have used Office 365, then you have used it's SaaS.
 
-**\*IBM Smart Cloud\*** - This offers private, public, and hybrid distribution platforms providing a full range of SaaS, PaaS, and IaaS cloud computing services for businesses. The pay as you go platform generates profits for IBM.
+***IBM Smart Cloud*** - This offers private, public, and hybrid distribution platforms providing a full range of SaaS, PaaS, and IaaS cloud computing services for businesses. The pay as you go platform generates profits for IBM.
 
-New applications are coming to life at a rapid pace all over the internet and the Cloud is no doubt a reason for it. You can expect cloud computing to be on the rise well into the next decade. This is only scratching the surface on what is possible. Who knows what will come next?
+New applications are coming to life at a rapid pace all over the internet and the Cloud is no doubt a major driving force behinding it. You can expect cloud computing to be on the rise well into the next decade. This is only scratching the surface on what is possible. Who knows what will come next?
 
 \- Chaance
