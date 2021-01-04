@@ -11,7 +11,7 @@ interests:
 social:
   - icon: envelope
     icon_pack: fas
-    link: 'mailto:chaance.graves@ctginnovations.io'  # For a direct email link, use "mailto:test@example.org".
+    link: mailto:chaance.graves@ctginnovations.io
   - icon: dev
     icon_pack: fab
     link: https://dev.to/ctg123
@@ -37,6 +37,8 @@ superuser: true
 user_groups:
   - Researchers
   - Visitors
+  - Developers
+  - Students
 highlight_name: false
 title: Chaance Graves
 email: chaanceg123@gmail.com
