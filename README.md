@@ -32,3 +32,5 @@ To help us develop this template and software sustainably under the MIT license,
 -->
 
 [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/ctg123/my-website)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/38ccc91d-4a0f-4e72-bb10-3c39f92ca763/deploy-status)](https://app.netlify.com/sites/ctg-site/deploys)
