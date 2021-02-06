@@ -112,7 +112,7 @@ phone = ""
 # office_hours = Check available times set in Calendy.
 
 # Enter an optional link for booking appointments (e.g. calendly.com).
-appointment_url = "https://calendly.com"
+appointment_url = "https://calendly.com/chaance-graves"
 
 # Contact links
 #   Set to `[]` to disable, or comment out unwanted lines with a hash `#`.
