@@ -24,7 +24,7 @@ There are likely millions of developers around the world using Python to build p
 * Machine Learning / Deep learning
 * Automating weekly emails
 * Setting up jobs to update a spreadsheet
-* etc....
+* etc...
 
 #### Helpful online resources & books
 
