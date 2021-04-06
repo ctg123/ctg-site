@@ -13,7 +13,7 @@ authors:
   - Chaance
 tags:
   - Linux
-  - Wordpress
+  - WordPress
   - Ansible
   - LAMP
 categories:
