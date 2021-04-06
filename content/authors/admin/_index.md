@@ -37,7 +37,7 @@ superuser: true
 user_groups:
   - Researchers
   - Engineers
-  - Entrepreners
+  - Entrepreneurs
   - Developers
   - Students
 highlight_name: false
