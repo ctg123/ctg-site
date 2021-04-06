@@ -4,9 +4,9 @@ subtitle: This Playbook will install a WordPress Content Management System (CMS)
   on top of a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote
   servers in a private network.
 date: 2021-04-06T07:05:39.631Z
-summary: This Playbook will install a WordPress Content Management System (CMS)
-  on top of a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote
-  servers in a private network.
+summary: This Ansible Playbook will install a WordPress Content Management
+  System (CMS) on top of a LAMP environment (Linux, Apache, MySQL, and PHP) on
+  two remote servers in a private network.
 draft: false
 featured: true
 authors:
