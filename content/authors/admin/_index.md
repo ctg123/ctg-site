@@ -36,7 +36,8 @@ education:
 superuser: true
 user_groups:
   - Researchers
-  - Visitors
+  - Engineers
+  - Entrepreners
   - Developers
   - Students
 highlight_name: false
