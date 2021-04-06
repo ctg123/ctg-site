@@ -43,16 +43,14 @@ highlight_name: false
 title: Chaance Graves
 email: chaanceg123@gmail.com
 ---
+Greetings, ladies and gentlemen! 👋🏾
 
-Greetings ladies and gentlemen! 👋🏾
+My name is Chaance Graves. Welcome to my website, where I share the projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to many issues foreseen in our modern society.
 
-My name is Chaance Graves. Welcome to my website where I share my projects that I’ve worked on or still tinkering with. I’m a creative problem solver eager to implement solutions to a wide range of problems foreseen in our modern society.
+I currently work at Intel Corporation, based at their Santa Clara campus in Silicon Valley, California, as a Datacenter Platform Applications Engineer since July 2017.
 
-I currently work at Intel Corporation based at their Santa Clara campus in Silicon Valley, California as a Datacenter Platform Applications Engineer since July 2017.
+I provide technical support and expertise for Intel server CPUs and server board design development for customers such as [Facebook](https://engineering.fb.com/category/data-center-engineering/), [Google](https://www.google.com/about/datacenters/), [Amazon Web Services](https://aws.amazon.com/compliance/data-center/data-centers/), etc. My primary OEM customer designs cloud computing server systems for Verizon Media (formerly Yahoo!), Apple, Dropbox, and Amazon Web Services (AWS).
 
-I provide technical support and expertise for Intel server CPU’s and server board design development for customers such as [Facebook](https://engineering.fb.com/category/data-center-engineering/), [Google](https://www.google.com/about/datacenters/), [Amazon Web Services](https://aws.amazon.com/compliance/data-center/data-centers/), etc. My primary OEM customer designs cloud computing server systems for companies such as Verizon Media (formerly Yahoo!), Apple, Dropbox, and Amazon Web Services (AWS).
+My journey has allowed me to serve customers and colleagues within the tech industry from different geographic regions globally, including U.S., Mexico, China, Taiwan, and Japan. I’ve also served as an Intel recruiting representative for the Datacenter Group for my Alma mater Texas A&M University, Prairie View, and [NSBE](https://www.nsbe.org/intro/index.html) annual conventions.
 
-My journey so far has me serving customers and fellow colleagues within the tech industry from different geographic regions on a global scale including U.S., Mexico, China, Taiwan, and Japan. I’ve also served as an Intel recruiting representative for the Datacenter Group for my Alma mater Texas A&M University, Prairie View, and at [NSBE](https://www.nsbe.org/intro/index.html) annual conventions.
-
-I mentor high school students from underrepresented communities in Oakland, CA to teach and inspire them to pursue careers in STEM. I always strive to be an advocate and give back to others who aspire to follow a path like mine.
-
+I mentor high school students from underrepresented communities in Oakland, CA, to teach and inspire them to pursue careers in STEM. I always strive to advocate and give back to others who aspire to follow a path like mine.
