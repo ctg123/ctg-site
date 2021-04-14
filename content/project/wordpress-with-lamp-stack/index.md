@@ -1,6 +1,6 @@
 ---
 title: Wordpress with LAMP Stack
-subtitle: ""
+subtitle: 👇🏾 Click on the "Blue" button to access the Github repository
 date: 2021-04-14T08:53:22.452Z
 summary: This Ansible Playbook will install a WordPress Content Managment System
   (CMS) with a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote
@@ -16,7 +16,7 @@ tags:
   - LAMP
 categories:
   - CM-Tools
-external_link: 
+external_link: https://ctg-site.netlify.app/project/wordpress-with-lamp-stack/
 links:
   - url: https://github.com/ctg123/wordpress-ansible/
 image:
