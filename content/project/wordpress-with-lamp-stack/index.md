@@ -8,7 +8,7 @@ summary: This Ansible Playbook will install a WordPress Content Management
 draft: false
 featured: true
 authors:
-  - Chaance
+  - ctgadget
 tags:
   - Linux
   - WordPress
@@ -22,14 +22,6 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-
-This Playbook will install a WordPress Content Management System (CMS) on top of a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote servers in a private network. The LAMP versioning highlights the following for each layer:
-
-- **Linux** - Ubuntu 18.04 ( 1 Virtual machine designated as the master node and two managed nodes for hosting the WordPress CMS). Vagrant and VirtualBox create these machines.
-- **Apache2** - The Apache HTTP server is the most widely-used web server in the world. It provides many powerful features, including dynamically loadable modules, robust media support, and extensive integration with other popular software.
-- **MySQL 5.7** - MySQL is the world’s most popular open-source relational database management system.
-- **PHP 7.4** - PHP is a popular general-purpose scripting language that is especially suited to web development.
-
 ## Create Vagrant private network
 
 Creating a robust sandbox environment for rapid prototyping eliminates the risk of crashing or breaking other functions when using servers or your local machine when purposed for other vital tasks. We’ll create a private network that you can install on any local device (i.e., laptop) as long as VirtualBox is available via Vagrant. The `vagrantfile` seen below can build test virtual machines (VM’s) for our Ansible playbook testing environment. If you prefer using a public cloud such as AWS, Azure, GCP, or Digital Ocean, the logical design is easy to follow.
