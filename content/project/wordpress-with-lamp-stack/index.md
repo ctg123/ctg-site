@@ -18,7 +18,7 @@ tags:
   - LAMP
 categories:
   - CM-Tools
-external_link: https://github.com/ctg123/wordpress-ansible/
+external_link:
 image:
   filename: featured
   focal_point: Smart
