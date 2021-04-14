@@ -16,7 +16,7 @@ tags:
   - LAMP
 categories:
   - CM-Tools
-external_link: https://ctg-site.netlify.app/project/wordpress-with-lamp-stack/
+external_link: https://github.com/ctg123/wordpress-ansible/
 links:
   - url: https://github.com/ctg123/wordpress-ansible/
 image:
