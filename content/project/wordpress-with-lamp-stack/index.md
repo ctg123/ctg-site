@@ -17,7 +17,8 @@ tags:
 categories:
   - CM-Tools
 external_link: https://github.com/ctg123/wordpress-ansible/
-links: []
+links:
+  - url: https://github.com/ctg123/wordpress-ansible/
 image:
   filename: featured
   focal_point: Smart
