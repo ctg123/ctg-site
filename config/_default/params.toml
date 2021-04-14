@@ -63,7 +63,7 @@ logo = ""
 # Documentation: https://wowchemy.com/docs/writing-markdown-latex/#highlighting-options
 highlight = true
 highlight_languages = ["bash","java","python","json","yaml","javascript","plaintext","http","sql","dockerfile","nginx","apache","go"]  # Add support for highlighting additional languages
-highlight_style = "dracula"  # For supported styles, see https://cdnjs.com/libraries/highlight.js/
+highlight_style = "monokai-sublime"  # For supported styles, see https://cdnjs.com/libraries/highlight.js/
 
 # Enable LaTeX math rendering? true/false
 #   If false, you can enable math on a per page basis as needed.
@@ -76,7 +76,7 @@ diagram = false
 # Privacy pack
 #   Show a cookie consent message to visitors
 #   Anonymize IP in Google Analytics (if enabled)
-privacy_pack = false
+privacy_pack = true
 
 # Enable visitors to edit pages?
 #   `repo` defines the repository URL. `editable` defines which page types can be edited.
@@ -134,7 +134,7 @@ contact_links = [
 sharing_image = ""
 
 # Twitter username (without @). Used when a visitor shares your site on Twitter.
-twitter = "" # Twitter account WIP.
+twitter = "ctgadget" # Twitter username
 
 ############################
 ## Regional Settings
