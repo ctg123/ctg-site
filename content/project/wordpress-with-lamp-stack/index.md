@@ -1,5 +1,5 @@
 ---
-title: Wordpress with LAMP Stack
+title: WordPress with LAMP Stack
 subtitle: 👇🏾 Click on the button to access the Github repository
 date: 2021-04-14T08:53:22.452Z
 summary: This Ansible Playbook will install a WordPress Content Managment System
