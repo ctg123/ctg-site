@@ -16,7 +16,7 @@ tags:
   - LAMP
 categories:
   - CM-Tools
-external_link: " "
+external_link:
 links:
   - url: https://github.com/ctg123/wordpress-ansible/
 image:
