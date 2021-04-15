@@ -16,7 +16,7 @@ tags:
   - LAMP
 categories:
   - CM-Tools
-external_link: --
+external_link:
 links:
   - url: https://github.com/ctg123/wordpress-ansible/
     icon_pack: fas
@@ -27,7 +27,7 @@ image:
   preview_only: false
 ---
 
-This Playbook will install a WordPress Content Management System (CMS) on top of a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote servers in a private network. The LAMP versioning highlights the following for each layer:
+This Playbook will install a WordPress Content Management System (CMS) wiithin a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote servers in a private network. The LAMP versioning highlights the following for each layer:
 
 - **Linux** - Ubuntu 18.04 ( 1 Virtual machine designated as the master node and two managed nodes for hosting the WordPress CMS). Vagrant and VirtualBox create these machines.
 - **Apache2** - The Apache HTTP server is the most widely-used web server in the world. It provides many powerful features, including dynamically loadable modules, robust media support, and extensive integration with other popular software.
