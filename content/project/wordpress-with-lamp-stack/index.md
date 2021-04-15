@@ -316,3 +316,16 @@ To see if WordPress is up and running, navigate to the managed node’s domain n
 
 `[<http://10.23.45.30>](<http://10.23.45.30>)` → http://10.23.45.30/wp-admin/install.php
 
+![wordpress-1](img/wordpress-1.png)
+
+After selecting the language you’d like to use for your WordPress installation, you’ll be presented with a final step to set up your WordPress user and password so you can log into your control panel. Setting up the name of your site, email, and login credentials is straightforward at this stage.
+
+![wordpress-2](img/wordpress-2.png)
+
+Once you log in, you will be taken to the WordPress administration dashboard:
+
+![wordpress-3](img/wordpress-3.png)
+
+Some common next steps for customizing your WordPress installation include choosing the permalinks setting for your posts (can be found in `Settings > Permalinks`) and selecting a new theme (in `Appearance > Themes`). Below is a snapshot of our **“Hello World!”** blog post.
+
+![wordpress-4](img/wordpress-4.png)
