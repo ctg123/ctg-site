@@ -249,25 +249,31 @@ Here is the following description of what each of these files is:
 
 Here are the contents of each of the files respectively that should can be edited:
 
-```
-client.my.cnf
+`client.my.cnf`
+```bash
 [client]
 user=root
 password=
 socket=/var/run/mysqld/mysqld.sock
-client.my.cnf.j2
+```
+`client.my.cnf.j2`
+```bash
 [client]
 user=root
 password={{ mysql_password }}
 socket=/var/run/mysqld/mysqld.sock
-inventory
+```
+`inventory`
+```bash
 [servers]
 ansible-node1 ansible_host=10.23.45.20
 ansible-node2 ansible_host=10.23.45.30
 
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
-vars/default.yml
+```
+`vars/default.yml`
+```bash
 ---
 #System Settings
 php_modules: [ 'php7.4-curl', 'php7.4-cli', 'php7.4-dev', 'php7.4-gd', 'php7.4-mbstring', 'php7.4-mcrypt', 'php7.4-json', 'php7.4-tidy', 'php7.4-opcache', 'php
