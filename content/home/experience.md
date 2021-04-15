@@ -27,7 +27,7 @@ experience:
     company: Intel Corporation
     company_url: 'https://www.intel.com'
     location: Santa Clara, California
-    date_start: '2017-01-07'
+    date_start: '2017-07-01'
     date_end: ''
     description: |2-
         Responsibilities and milestones include:
