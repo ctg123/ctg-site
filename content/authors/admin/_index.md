@@ -42,7 +42,7 @@ user_groups:
   - Students
 highlight_name: false
 title: Chaance Graves
-email: chaanceg123@gmail.com
+email: chaance.graves@ctginnovations.io
 ---
 Greetings, ladies and gentlemen! 👋🏾
 
