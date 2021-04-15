@@ -1,6 +1,6 @@
 ---
 title: WordPress with LAMP Stack
-subtitle: 👇🏾 Click on the button to access the Github repository
+subtitle: 👇🏾 Click on the button to access the code repository
 date: 2021-04-14T08:53:22.452Z
 summary: This Ansible Playbook will install a WordPress Content Managment System
   (CMS) within a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote
