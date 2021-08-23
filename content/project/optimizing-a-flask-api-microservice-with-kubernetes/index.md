@@ -22,6 +22,7 @@ external_link:
 links:
   - url: https://github.com/ctg123/ansible-kops
     icon_pack: fas
+    name: Github
 image:
   filename: featured
   focal_point: Smart
