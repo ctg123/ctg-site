@@ -17,7 +17,7 @@ tags:
   - DevOps
 categories:
   - CM-Tools
-external_link: https://github.com/ctg123/wordpress-ansible/
+external_link: 
 links:
   - url: https://github.com/ctg123/wordpress-ansible/
     icon_pack: fas
