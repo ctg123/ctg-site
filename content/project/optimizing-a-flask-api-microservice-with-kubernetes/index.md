@@ -15,7 +15,7 @@ categories:
   - Cloud-Native
   - CM-Tools
   - Python
-external_link: https://github.com/ctg123/ansible-kops
+external_link:
 links:
   - url: https://github.com/ctg123/ansible-kops
     name: Github
