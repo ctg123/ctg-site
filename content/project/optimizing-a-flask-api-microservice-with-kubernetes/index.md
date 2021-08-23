@@ -31,7 +31,7 @@ image:
 
 A popular payment application, EasyPay where users add money to their wallet accounts, faces an issue in its payment success rate. The timeout that occurs with the connectivity of the database has been the reason for the issue.
 
-While troubleshooting, it is found that the database server has several downtime instances at irregular intervals. This situation compels the company to create their own infrastructure that runs in high-availability mode. 
+While troubleshooting, it is found that the database server has several downtime instances at irregular intervals. This situation compels the company to create its own infrastructure that runs in high-availability mode. 
 
 Given that online shopping experiences continue to evolve as per customer expectations, the developers are driven to make their app more reliable, fast, and secure for improving the performance of the current system.
 
@@ -72,7 +72,7 @@ The purpose of this repository is to provide a Kubernetes cluster in a Public Cl
 - - -
 
 * [kOps](https://kops.sigs.k8s.io/) - kOps is an official Kubernetes project for managing production-grade Kubernetes clusters to Amazon Web Services.
-* [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) - kubectl is a command line tool for controlling Kubernetes clusters.
+* [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) - kubectl is a command-line tool for controlling Kubernetes clusters.
 * [Ansible](https://docs.ansible.com/ansible/latest/index.html) - Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy.
 * [Docker](https://docs.docker.com/) - Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
 * [Helm](https://helm.sh/) - Helm is a tool for managing Charts. Charts are packages of pre-configured Kubernetes resources.
@@ -281,4 +281,214 @@ worker_node_count: 3
 ############################################
 # ~~ Let's encrypt domain's email owner ~~ #
 email_owner: chaance.graves@ctginnovations.io
+```
+
+### Generate the SSH Keys and deploy the cluster
+
+- - -
+
+When the environment and the pre-requisites configures, please run the following playbooks with Ansible. The `generate-ssh-key.yml` will create the SSH key pair to access Kubernetes API, which you can log in to the master node.
+Once generated, make sure the path matches the variable specified in the `group_vars` directory. You're now ready to run the `deploy-cluster.yml` playbook.
+
+```shell
+$ ansible-playbook generate-ssh-key.yml
+$ ansible-playbook deploy-cluster.yml --ask-become-pass
+```
+
+It should take approximately 8 - 10 minutes to complete.
+
+### Install Kubernetes Dashboard
+
+A critical feature for any Kubernetes cluster is efficient monitoring of all resources with a user-friendly UI. The Kubernetes dashboard provides the ability to deploy your containerized applications, troubleshooting, and manage other cluster resources such as scaling a deployment, initiating rolling updates, resetting pods, etc.
+
+Run the following `deploy_dashboard.sh` to pull from the latest version stored in the official Github repo. Once complete, the default service type configures as a ClusterIP. We will change this to LoadBalancer to access it externally. You can find the service type and edit it with the following command:
+
+```shell
+$ kubectl -n kubernetes-dashboard edit svc kubernetes-dashboard
+```
+
+Make sure the service type changed to LoadBalancer successfully. You should get an AWS ELB address as an output.
+
+```shell
+$ kubectl -n kubernetes-dashboard get svc
+NAME                        TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT(S)         AGE
+dashboard-metrics-scraper   ClusterIP      100.67.72.147   <none>                                                                    8000/TCP        5h20m
+kubernetes-dashboard        LoadBalancer   100.69.145.80   a6c1db00d3d9d42659150be7771c2ba5-1256148891.us-east-1.elb.amazonaws.com   443:31463/TCP   5h20m
+```
+
+An output of the script produced a security token needed to log in. Copy the token and enter it in the dashboard. You will then sign into the Kubernetes dashboard. You can retrieve the token when needed with this command:
+
+```shell
+$ kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+```
+
+## Deploy Flask API + MongoDB app on Kubernetes
+
+We will develop a simple Python Flask API application, which will communicate to a MongoDB database, containerize it using Docker, and deploy it to the Kubernetes cluster.
+
+### Prerequisites for development on a local machine
+
+Install the following python libraries using pip located in the `requirements.txt` file in the `payment-app` directory. You will have Flask running locally on your machine before deploying Docker images to Kubernetes.
+
+```shell
+$ cd ansible-kops/payment-app
+$ python3 -m pip install -r requirements.txt --user
+$ pip list
+```
+
+### Creating the Flask Payment application
+
+We're producing a simple RESTful API to create, read, update, and delete (CRUD) payment entries. The app will store the data in a MongoDB database, an open-source database that stores flexible JSON-like documents that is Non-relational (often called NoSQL databases).
+
+By default, when a MongoDB Server instance starts on a machine, it listens to port `27017`. The Flask-PyMongo module helps us to bridge Flask and MongoDB and provides some convenience helpers. An objectId module is a tool for working with MongoDB ObjectId, the default value of _id field of each document, generated during the creation of any document.
+
+The `app.py` which can run on any host (python app.py), can be accessed at `http://localhost:5000/` inside it. 
+
+```python
+from flask import Flask, request, jsonify
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+from flask_cors import CORS
+import socket
+
+# Configuration
+DEBUG = True
+
+# Instantiate the app
+app = Flask(__name__)
+app.config["MONGO_URI"] = "mongodb://mongo:27017/dev"
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+mongo = PyMongo(app)
+db = mongo.db
+
+# enable CORS
+CORS(app, resources={r'/*': {'origins': '*'}})
+
+# UI message to show which pods the Payment API container is running
+@app.route("/")
+def index():
+    hostname = socket.gethostname()
+    return jsonify(
+        message="Welcome to the EasyPay app. I am running inside the {} pod!".format(hostname)
+    )
+
+@app.route("/payments")
+def get_all_payments():
+    payments = db.payment.find()
+    data = []
+    for payment in payments:
+        item = {
+            "id": str(payment["_id"]),
+            "payment": payment["payment"]
+        }
+        data.append(item)
+    return jsonify(
+        data=data
+    )
+
+# POST Method to collect a user's payment
+@app.route("/payments", methods=["POST"])
+def add_payment():
+    data = request.get_json(force=True)
+    db.payment.insert_one({"payment": data["payment"]})
+    return jsonify(
+        message="Payment saved successfully to your account!"
+    )
+
+# PUT Method to update a user's payment
+@app.route("/payments/<id>", methods=["PUT"])
+def update_payment(id):
+    data = request.get_json(force=True)["payment"]
+    response = db.payment.update_one({"_id": ObjectId(id)}, {"$set": {"payment": data}})
+    if response.matched_count:
+        message = "Payment updated successfully!"
+    else:
+        message = "No Payments were found!"
+    return jsonify(
+        message=message
+    )
+
+# DELETE Method to delete a user's payment
+@app.route("/payments/<id>", methods=["DELETE"])
+def delete_payment(id):
+    response = db.payment.delete_one({"_id": ObjectId(id)})
+    if response.deleted_count:
+        message = "Payment deleted successfully!"
+    else:
+        message = "No Payments were found!"
+    return jsonify(
+        message=message
+    )
+
+# POST Method to delet all payment data
+@app.route("/payments/delete", methods=["POST"])
+def delete_all_payments():
+    db.payment.remove()
+    return jsonify(
+        message="All Payments deleted!"
+    )
+
+# The app server will be able to run locally at port 5000
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+```
+
+We first import all the required modules and create instances of the Flask class (our app) and the PyMongo class (our database). Note that the hostname in the `MONGO_URI` Flask configuration variable defines the mongo instead of localhost. Mongo will be the name of our database container, and containers in the same Docker network can talk to each other by their names.
+
+Our app consists of six functions which are assigned URLs by @app.route() Python decorator. At first glance, it is easy to understand that the decorator is telling our app that executes the underlying function whenever a user visits our @app domain at the given route().
+
+* `index()` - displays a welcome message for the app. It Also displays the hostname of the machine where our app is running. This is useful to understand that we will be hitting a random pod each time we try to access our app on Kubernetes.
+* `get_all_payments()` - displays all the payments that are available in the database as a list of dictionaries.
+* `add_payment()` - adds a new payment that is stored in the database with a unique ID.
+* `update_payment(id)` - modifies any existing payment entry. If no payment data is found with the queried ID, the appropriate message is returned.
+* `delete_payment(id)` - removes that entry of the task having the queried ID from the database. Returns appropriate message if no task with the specified ID is found.
+* `delete_all_payments()` - removes all the payment data and returns an empty list.
+
+In the final section, where we run the app, we define the host parameter as **'0.0.0.0'** to make the server publicly available, running on the machine's IP address, which will be inside a unique container.
+
+### Containerizing the application
+
+Once you have Docker installed locally, we will store our images to Docker Hub. If you don't have one to authorize Docker to connect to your `Docker Hub` account, use the docker login command.
+
+Let's build a Docker image of the app to push to the Docker Hub registry. In the directory `payment-app`, a `Dockerfile` with the following contents to create the image:
+
+```dockerfile
+######################################
+# ~~ DOCKERFILE for Flask API app ~~ #
+######################################
+
+FROM python:alpine3.9
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+ENV PORT 5000
+EXPOSE 5000
+ENTRYPOINT [ "python" ]
+CMD [ "app.py" ]
+```
+
+We are using the official Python3.9 image, based on the Alpine Linux project, as the base image and copying our working directory's contents to a new directory on the image. We are instructing the image to expose the port `5000` when run as a container, on which we can access our app. Finally, our app container configures to run `python app.py` automatically when deployed to a pod.
+
+Here, we build our image with tag `<username>/<image-name>:<version>` format using the below command:
+
+```shell
+$ docker build -t ctgraves16/paymentapp-python:1.0.0 .
+```
+
+and then push it to the Docker Hub registry. It will be publicly available where anyone in the world can download and run it:
+
+```shell
+$ docker push ctgraves16/paymentapp-python:1.0.0
+```
+
+> 👉🏾* **NOTE**: Ensure to replace <ctgraves16> with your Docker Hub username.*
+
+Now that we containerized the app, what about the database? How can we containerize that? We don't have to worry about it as we can easily use the official `mongo` Docker image and run it on the same network as the app container.
+
+Run the below commands to test the image locally where it can be accessible at <http://localhost:5000/>
+
+```shell
+$ docker network create payment-app-net
+$ docker run --name=mongo --rm -d --network=payment-app-net mongo
+$ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app-net ctgraves16/paymentapp-python:1.0.0
 ```
