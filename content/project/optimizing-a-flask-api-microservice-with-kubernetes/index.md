@@ -6,6 +6,8 @@ summary: An end-to-end project that deploys a Flask API microservice to an AWS
   Kubernetes cluster with kOps and Ansible.
 draft: false
 featured: false
+authors:
+  - ctgadget
 tags:
   - Kubernetes
   - Ansible
