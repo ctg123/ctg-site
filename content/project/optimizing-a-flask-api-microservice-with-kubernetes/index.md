@@ -1,7 +1,6 @@
 ---
 title: Optimizing a Flask API microservice with Kubernetes
-subtitle: An end-to-end project that deploys a Flask API microservice to an AWS
-  Kubernetes cluster with kOps and Ansible.
+subtitle: 👇🏾 Click on the button to access the code repository
 date: 2021-08-23T05:31:47.430Z
 summary: An end-to-end project that deploys a Flask API microservice to an AWS
   Kubernetes cluster with kOps and Ansible.
@@ -18,13 +17,15 @@ categories:
   - CM-Tools
   - Python
 external_link: https://github.com/ctg123/ansible-kops
-links: []
+links:
+  - url: https://github.com/ctg123/ansible-kops
+    icon_pack: fas
 image:
   filename: featured
   focal_point: Smart
   preview_only: false
 ---
-### **Background of the problem statement:**
+## **Background of the problem statement:**
 
 A popular payment application, EasyPay where users add money to their wallet accounts, faces an issue in its payment success rate. The timeout that occurs with the connectivity of the database has been the reason for the issue.
 
