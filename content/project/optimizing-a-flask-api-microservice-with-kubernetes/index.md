@@ -1,8 +1,10 @@
 ---
 title: Optimizing a Flask API microservice with Kubernetes
-subtitle: An end to end project that deploys a Flask API microservice to an AWS
+subtitle: An end-to-end project that deploys a Flask API microservice to an AWS
   Kubernetes cluster with kOps and Ansible.
 date: 2021-08-23T05:31:47.430Z
+summary: An end-to-end project that deploys a Flask API microservice to an AWS
+  Kubernetes cluster with kOps and Ansible.
 draft: false
 featured: false
 tags:
@@ -16,10 +18,7 @@ categories:
   - CM-Tools
   - Python
 external_link: https://github.com/ctg123/ansible-kops
-links:
-  - url: https://github.com/ctg123/ansible-kops
-    name: Github
-    icon_pack: fas
+links: []
 image:
   filename: featured
   focal_point: Smart
