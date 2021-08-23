@@ -18,7 +18,7 @@ categories:
   - Cloud-Native
   - CM-Tools
   - Python
-external_link:
+external_link: https://github.com/ctg123/ansible-kops
 links:
   - url: https://github.com/ctg123/ansible-kops
     icon_pack: fas
@@ -484,7 +484,7 @@ and then push it to the Docker Hub registry. It will be publicly available where
 $ docker push ctgraves16/paymentapp-python:1.0.0
 ```
 
-> 👉🏾* **NOTE**: Ensure to replace <ctgraves16> with your Docker Hub username.*
+> 👉🏾* **NOTE**: Ensure to replace **ctgraves16** with your Docker Hub username.*
 
 Now that we containerized the app, what about the database? How can we containerize that? We don't have to worry about it as we can easily use the official `mongo` Docker image and run it on the same network as the app container.
 
