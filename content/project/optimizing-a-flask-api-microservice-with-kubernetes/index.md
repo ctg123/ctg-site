@@ -15,7 +15,7 @@ categories:
   - Cloud-Native
   - CM-Tools
   - Python
-external_link:
+external_link: https://github.com/ctg123/ansible-kops
 links:
   - url: https://github.com/ctg123/ansible-kops
     name: Github
@@ -31,11 +31,7 @@ A popular payment application, EasyPay where users add money to their wallet acc
 
 While troubleshooting, it is found that the database server has several downtime instances at irregular intervals. This situation compels the company to create their own infrastructure that runs in high-availability mode. 
 
-Given that online shopping experiences continue to evolve as per customer expectations, the developers are driven to make their app more reliable, fast, and secure for improvin
-
-![]()
-
-g the performance of the current system.
+Given that online shopping experiences continue to evolve as per customer expectations, the developers are driven to make their app more reliable, fast, and secure for improving the performance of the current system.
 
 ## **Create Ansible host Virtual Machine**
 
