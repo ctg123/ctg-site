@@ -18,7 +18,7 @@ categories:
   - Cloud-Native
   - CM-Tools
   - Python
-external_link:
+external_link: https://github.com/ctg123/ansible-kops
 links:
   - url: https://github.com/ctg123/ansible-kops
     icon_pack: fas
@@ -37,7 +37,7 @@ Given that online shopping experiences continue to evolve as per customer expect
 
 ## **Create Ansible host Virtual Machine**
 
-We will create our development environment inside a local virtual machine. The logical design is easy to follow if you prefer using a public cloud such as AWS, Azure, GCP, or Digital Ocean. The `vagrantfile` seen below uses an Ubuntu 20.04 base image provided by the Bento project. We'll create a single VM on the local device (i.e., laptop) in VirtualBox via Vagrant. You can set the network as either "private" or "public" if the ports are forwarded when testing Docker images locally.
+We will create our development environment inside a local virtual machine. The logical design is easy to follow if you prefer using a public cloud such as AWS, Azure, GCP, or Digital Ocean. The `vagrantfile` seen below uses an Ubuntu 20.04 base image provided by the **[Bento project](https://app.vagrantup.com/bento/boxes/ubuntu-20.04)**. We'll create a single VM on the local device (i.e., laptop) in VirtualBox via Vagrant. You can set the network as either "private" or "public" if the ports are forwarded when testing Docker images locally.
 
 ```ruby
 # -*- mode: ruby -*-
@@ -95,7 +95,7 @@ The purpose of this repository is to provide a Kubernetes cluster in a Public Cl
 - - -
 
 * [Kube2IAM](https://github.com/jtblin/kube2iam) - kube2iam provides different AWS IAM roles for pods running on Kubernetes
-* [External-DNS](https://github.com/kubernetes-sigs/external-dns) - Configure external DNS servers (AWS Route53, Google CloudDNS and others) for Kubernetes Ingresses and Services.
+* [External-DNS](https://github.com/kubernetes-sigs/external-dns) - Configure external DNS servers (AWS Route53, Google CloudDNS, and others) for Kubernetes Ingresses and Services.
 * [Ingress NGINX](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx) - Ingress-nginx is an Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer.
 * [Cert-manager](https://github.com/jetstack/cert-manager) - Automatically provision and manage TLS certificates in Kubernetes.
 
@@ -287,8 +287,8 @@ email_owner: chaance.graves@ctginnovations.io
 
 - - -
 
-When the environment and the pre-requisites configures, please run the following playbooks with Ansible. The `generate-ssh-key.yml` will create the SSH key pair to access Kubernetes API, which you can log in to the master node.
-Once generated, make sure the path matches the variable specified in the `group_vars` directory. You're now ready to run the `deploy-cluster.yml` playbook.
+When the environment and the pre-requisites configures, run the following playbooks with Ansible. The `generate-ssh-key.yml` will create the SSH key pair to access Kubernetes API, which you can use to log in to the master node with.
+Once generated, make sure the path matches the variable specified in the `group_vars` directory. You're now ready to run the `deploy-cluster.yml` playbook!
 
 ```shell
 $ ansible-playbook generate-ssh-key.yml
@@ -299,15 +299,17 @@ It should take approximately 8 - 10 minutes to complete.
 
 ### Install Kubernetes Dashboard
 
-A critical feature for any Kubernetes cluster is efficient monitoring of all resources with a user-friendly UI. The Kubernetes dashboard provides the ability to deploy your containerized applications, troubleshooting, and manage other cluster resources such as scaling a deployment, initiating rolling updates, resetting pods, etc.
+A critical feature for any Kubernetes cluster is efficient monitoring of all resources with an accessible UI. The Kubernetes dashboard enables the ability to deploy containerized applications, troubleshoot pods, and manage other cluster resources such as scaling a deployment, initiating rolling updates, resetting pods instead of using the kubectl command.
 
-Run the following `deploy_dashboard.sh` to pull from the latest version stored in the official Github repo. Once complete, the default service type configures as a ClusterIP. We will change this to LoadBalancer to access it externally. You can find the service type and edit it with the following command:
+Run the `deploy_dashboard.sh` to pull from the latest version of the Kubernetes dashboard stored in the official Github repo. You can check at this **[link](https://github.com/kubernetes/dashboard/releases)** to see which version is the latest release and update the script accordingly. 
+
+Once complete, the default service type configures as a ClusterIP. We will change this to LoadBalancer to access it externally. You can find the service type and edit it with the following command:
 
 ```shell
 $ kubectl -n kubernetes-dashboard edit svc kubernetes-dashboard
 ```
 
-Make sure the service type changed to LoadBalancer successfully. You should get an AWS ELB address as an output.
+Make sure the service type changed to **LoadBalancer** successfully. You should get an AWS ELB address as an output.
 
 ```shell
 $ kubectl -n kubernetes-dashboard get svc
@@ -328,7 +330,7 @@ We will develop a simple Python Flask API application, which will communicate to
 
 ### Prerequisites for development on a local machine
 
-Install the following python libraries using pip located in the `requirements.txt` file in the `payment-app` directory. You will have Flask running locally on your machine before deploying Docker images to Kubernetes.
+Install the following python libraries using pip located in the `requirements.txt` file in the `payment-app` directory. You will have Flask running locally on your machine prior to deploying the Docker image to Kubernetes.
 
 ```shell
 $ cd ansible-kops/payment-app
@@ -338,7 +340,7 @@ $ pip list
 
 ### Creating the Flask Payment application
 
-We're producing a simple RESTful API to create, read, update, and delete (CRUD) payment entries. The app will store the data in a MongoDB database, an open-source database that stores flexible JSON-like documents that is Non-relational (often called NoSQL databases).
+We'll produce a simple RESTful API to create, read, update, and delete (CRUD) payment entries. The app will store the data in a MongoDB database, an open-source database that stores flexible JSON-like documents that is Non-relational (often called NoSQL databases).
 
 By default, when a MongoDB Server instance starts on a machine, it listens to port `27017`. The Flask-PyMongo module helps us to bridge Flask and MongoDB and provides some convenience helpers. An objectId module is a tool for working with MongoDB ObjectId, the default value of _id field of each document, generated during the creation of any document.
 
@@ -433,7 +435,7 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
 ```
 
-We first import all the required modules and create instances of the Flask class (our app) and the PyMongo class (our database). Note that the hostname in the `MONGO_URI` Flask configuration variable defines the mongo instead of localhost. Mongo will be the name of our database container, and containers in the same Docker network can talk to each other by their names.
+We first import all the required modules and create instances of the Flask class (the app) and the PyMongo class (the database). Note that the hostname in the `MONGO_URI` Flask configuration variable defines the mongo instead of localhost. Mongo will be the name of our database container, and containers in the same Docker network can talk to each other by their names.
 
 Our app consists of six functions which are assigned URLs by @app.route() Python decorator. At first glance, it is easy to understand that the decorator is telling our app that executes the underlying function whenever a user visits our @app domain at the given route().
 
@@ -448,7 +450,7 @@ In the final section, where we run the app, we define the host parameter as **'0
 
 ### Containerizing the application
 
-Once you have Docker installed locally, we will store our images to Docker Hub. If you don't have one to authorize Docker to connect to your `Docker Hub` account, use the docker login command.
+Once you have Docker installed locally, we will store our images to Docker Hub. Use the `docker login` command to authorize Docker to connect to your `Docker Hub` account.
 
 Let's build a Docker image of the app to push to the Docker Hub registry. In the directory `payment-app`, a `Dockerfile` with the following contents to create the image:
 
@@ -469,7 +471,7 @@ CMD [ "app.py" ]
 
 We are using the official Python3.9 image, based on the Alpine Linux project, as the base image and copying our working directory's contents to a new directory on the image. We are instructing the image to expose the port `5000` when run as a container, on which we can access our app. Finally, our app container configures to run `python app.py` automatically when deployed to a pod.
 
-Here, we build our image with tag `<username>/<image-name>:<version>` format using the below command:
+Here, we build our image with the tag `<username>/<image-name>:<version>` format using the below command:
 
 ```shell
 $ docker build -t ctgraves16/paymentapp-python:1.0.0 .
