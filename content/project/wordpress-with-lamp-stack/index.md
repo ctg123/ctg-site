@@ -2,9 +2,9 @@
 title: WordPress with LAMP Stack
 subtitle: 👇🏾 Click on the button to access the code repository
 date: 2021-04-14T08:53:22.452Z
-summary: This Ansible Playbook will install a WordPress Content Management System
-  (CMS) within a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote
-  servers in a private network.
+summary: This Ansible Playbook will install a WordPress Content Management
+  System (CMS) within a LAMP environment (Linux, Apache, MySQL, and PHP) on two
+  remote servers in a private network.
 draft: false
 featured: true
 authors:
@@ -14,9 +14,10 @@ tags:
   - WordPress
   - Ansible
   - LAMP
+  - DevOps
 categories:
   - CM-Tools
-external_link:
+external_link: https://github.com/ctg123/wordpress-ansible/
 links:
   - url: https://github.com/ctg123/wordpress-ansible/
     icon_pack: fas
@@ -26,13 +27,12 @@ image:
   focal_point: Smart
   preview_only: false
 ---
+This Playbook will install a WordPress Content Management System (CMS) within a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote servers in a private network. The LAMP versioning highlights the following for each layer:
 
-This Playbook will install a WordPress Content Management System (CMS) wiithin a LAMP environment (Linux, Apache, MySQL, and PHP) on two remote servers in a private network. The LAMP versioning highlights the following for each layer:
-
-- **Linux** - Ubuntu 18.04 ( 1 Virtual machine designated as the master node and two managed nodes for hosting the WordPress CMS). Vagrant and VirtualBox create these machines.
-- **Apache2** - The Apache HTTP server is the most widely-used web server in the world. It provides many powerful features, including dynamically loadable modules, robust media support, and extensive integration with other popular software.
-- **MySQL 5.7** - MySQL is the world’s most popular open-source relational database management system.
-- **PHP 7.4** - PHP is a popular general-purpose scripting language that is especially suited to web development.
+* **Linux** - Ubuntu 18.04 ( 1 Virtual machine designated as the master node and two managed nodes for hosting the WordPress CMS). Vagrant and VirtualBox create these machines.
+* **Apache2** - The Apache HTTP server is the most widely-used web server in the world. It provides many powerful features, including dynamically loadable modules, robust media support, and extensive integration with other popular software.
+* **MySQL 5.7** - MySQL is the world’s most popular open-source relational database management system.
+* **PHP 7.4** - PHP is a popular general-purpose scripting language that is especially suited to web development.
 
 ## Create Vagrant private network
 
@@ -168,9 +168,9 @@ admin@ansible-master:~$ ssh-copy-id -i ~/.ssh/id_rsa.pub vagrant@10.23.45.20
 
 The `setup_ubuntu1804` folder in the Github repository runs an independent playbook that will execute an initial server setup for the managed nodes. The options stores in the `vars/default.yml` variable file. We define the following setting below:
 
-- `create_user`: The name of the remote sudo user to create. In our case, it will be admin.
-- `copy_local_key`: Path to a local SSH public key that will be copied as authorized key for the new user. By default, it copies the key from the current system user running Ansible.
-- `sys_packages`: An array with a list fundamental packages to be installed.
+* `create_user`: The name of the remote sudo user to create. In our case, it will be admin.
+* `copy_local_key`: Path to a local SSH public key that will be copied as an authorized key for the new user. By default, it copies the key from the current system user running Ansible.
+* `sys_packages`: An array with a list of fundamental packages to be installed.
 
 Run the playbook with the following commands.
 
@@ -241,31 +241,36 @@ admin@ansible-master:~/wordpress-ansible/wordpress-lamp_ubuntu1804$ tree
 
 Here is the following description of what each of these files is:
 
-- `files/apache.conf.j2`: Template file for setting up the Apache VirtualHost.
-- `files/wp-config.php.j2`: Template file for setting up WordPress’s configuration file.
-- `files/client.my.cnf`: The initial client.my.cnf is provided without a password and used to obtain a connection from which roots password updates to the managed nodes we want to store for MySQL database connection.
-- `files/client.my.cnf.j2`: Contains the same structure as the initial client.my.cnf file but as a jinja2 Template file for better portability.
-- `inventory`: Keeps track of which nodes and hosts will be a part of the infrastructure on which playbooks and ad-hoc commands will run.
-- `vars/default.yml`: Variable file for customizing playbook settings.
-- `playbook.yml`: The playbook.yml file is where all tasks from this setup are defined. It starts by defining the group of servers that should target this setup (all). It uses become: true to describe that tasks should be executed with privilege escalation (sudo) by default. Then, it includes the `vars/default.yml` variable file to load configuration options.
+* `files/apache.conf.j2`: Template file for setting up the Apache VirtualHost.
+* `files/wp-config.php.j2`: Template file for setting up WordPress’s configuration file.
+* `files/client.my.cnf`: The initial client.my.cnf is provided without a password and used to obtain a connection from which roots password updates to the managed nodes we want to store for MySQL database connection.
+* `files/client.my.cnf.j2`: Contains the same structure as the initial client.my.cnf file but as a jinja2 Template file for better portability.
+* `inventory`: Keeps track of which nodes and hosts will be a part of the infrastructure on which playbooks and ad-hoc commands will run.
+* `vars/default.yml`: Variable file for customizing playbook settings.
+* `playbook.yml`: The playbook.yml file is where all tasks from this setup are defined. It starts by defining the group of servers that should target this setup (all). It uses become: true to describe that tasks should be executed with privilege escalation (sudo) by default. Then, it includes the `vars/default.yml` variable file to load configuration options.
 
-Here are the contents of each of the files respectively that should can be edited:
+Here are the contents of each of the files respectively that should be edited:
 
 `client.my.cnf`
+
 ```bash
 [client]
 user=root
 password=
 socket=/var/run/mysqld/mysqld.sock
 ```
+
 `client.my.cnf.j2`
+
 ```bash
 [client]
 user=root
 password={{ mysql_password }}
 socket=/var/run/mysqld/mysqld.sock
 ```
+
 `inventory`
+
 ```bash
 [servers]
 ansible-node1 ansible_host=10.23.45.20
@@ -274,7 +279,9 @@ ansible-node2 ansible_host=10.23.45.30
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
 ```
+
 `vars/default.yml`
+
 ```bash
 ---
 #System Settings
@@ -295,14 +302,14 @@ http_port: "80"
 
 The following list contains a brief explanation of each of these variables if they should edit or change for any reason.
 
-- `php_modules`: An array containing PHP 7.4 extensions that support your WordPress setup. This list is extensive to support more features.
-- `mysql_root_password`: The desired password for the **root** MySQL account.
-- `mysql_db`: The name of the MySQL database intended for WordPress.
-- `mysql_user`: The name of the MySQL user for WordPress.
-- `mysql_password`: The password for the new MySQL user.
-- `http_host`: Your domain name.
-- `http_conf`: The name of the configuration file within Apache.
-- `http_port`: HTTP port for the virtual host. By default, it is `80`.
+* `php_modules`: An array containing PHP 7.4 extensions that support your WordPress setup. This list is extensive to support more features.
+* `mysql_root_password`: The desired password for the **root** MySQL account.
+* `mysql_db`: The name of the MySQL database intended for WordPress.
+* `mysql_user`: The name of the MySQL user for WordPress.
+* `mysql_password`: The password for the new MySQL user.
+* `http_host`: Your domain name.
+* `http_conf`: The name of the configuration file within Apache.
+* `http_port`: HTTP port for the virtual host. By default, it is `80`.
 
 Once you’ve verified that the variables are correct, you can run the Playbook to install WordPress on the managed node(s) with the `ansible-playbook` command below:
 
