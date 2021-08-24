@@ -325,6 +325,10 @@ An output of the script produced a security token needed to log in. Copy the tok
 $ kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
 ```
 
+![kubernetes-dashboard-login](img/kubernetes-dashboard-login.png)
+
+![example-kubernetes-dashboard-UI](img/example-kubernetes-dashboard-ui.png)
+
 ## Deploy Flask API + MongoDB app on Kubernetes
 
 We will develop a simple Python Flask API application, which will communicate to a MongoDB database, containerize it using Docker, and deploy it to the Kubernetes cluster.
@@ -495,3 +499,4 @@ $ docker network create payment-app-net
 $ docker run --name=mongo --rm -d --network=payment-app-net mongo
 $ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app-net ctgraves16/paymentapp-python:1.0.0
 ```
+![payment-app-localhost](img/payment-app-localhost.png)
