@@ -173,7 +173,9 @@ ansible [core 2.11.3]
 
 ## Environment Setup
 
-The ansible packages for Kops & Kubectl are compatible with Linux-AMD64 and Darwin-AMD64 architectures.
+The ansible packages for Kops & Kubectl are compatible with Linux-AMD64 and Darwin-AMD64 architectures. The following diagram is a visual respentation of the infrastructure we will deploy to AWS.
+
+![aws-kops-ansible](img/aws-kops-ansible.png)
 
 ### AWS account
 
@@ -951,6 +953,8 @@ nginx-ingress-ingress-nginx-controller-admission   ClusterIP      100.69.127.174
 ```
 
 ### Testing the payment app HPA
+
+![kops-hpa-ca-architecture](img/kops-hpa-ca-architecture.png)
 
 Before installing and running an open-source load testing generator to test the `payment-app-hpa`, let's run the `kubectl describe hpa` to see all the conditions affecting the HorizontalPodAutoscaler.
 
