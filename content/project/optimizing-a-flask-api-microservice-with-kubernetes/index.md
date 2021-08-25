@@ -18,7 +18,7 @@ categories:
   - Cloud-Native
   - CM-Tools
   - Python
-external_link:
+external_link: https://www.chaancegraves.com/project/optimizing-a-flask-api-microservice-with-kubernetes/
 links:
   - url: https://github.com/ctg123/ansible-kops
     icon_pack: fas
@@ -499,4 +499,611 @@ $ docker network create payment-app-net
 $ docker run --name=mongo --rm -d --network=payment-app-net mongo
 $ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app-net ctgraves16/paymentapp-python:1.0.0
 ```
+
 ![payment-app-localhost](img/payment-app-localhost.png)
+
+### Deploy the application and MongoDB database to Kubernetes
+
+We can check on how the nodes are set up by running `kubectl get nodes`.
+
+```shell
+~/ansible-kops$ kubectl get nodes
+NAME                             STATUS   ROLES                  AGE   VERSION
+ip-172-20-125-204.ec2.internal   Ready    node                   17h   v1.21.3
+ip-172-20-42-157.ec2.internal    Ready    control-plane,master   17h   v1.21.3
+ip-172-20-50-137.ec2.internal    Ready    node                   17h   v1.21.3
+ip-172-20-81-89.ec2.internal     Ready    node                   17h   v1.21.3
+```
+
+The `deploy.sh` script automates all the steps for setting up the deployments and services. The deployment of the resources are in the following order:
+
+1. `mongo-pv.yml` Persistent Volume:
+
+The `mongo-pv.yml` file creates a storage volume of 256 MB to be made available to the mongo container. The contents of this volume persist, even if the MongoDB pod is deleted or moved to a different node.
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 256Mi
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /tmp/db
+```
+
+We'll use a local path `/tmp/db` on the host as the disk path for simplicity.
+
+> 👉🏾 **NOTE**: Both PVC and PV must have the same class, otherwise, a PVC will not find a PV, and STATUS of such a PVC will be Pending.
+
+```shell
+$ kubectl get storageclass -o wide
+NAME                      PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+default                   kubernetes.io/aws-ebs   Delete          Immediate              false                  17h
+gp2                       kubernetes.io/aws-ebs   Delete          Immediate              false                  17h
+kops-ssd-1-17 (default)   kubernetes.io/aws-ebs   Delete          WaitForFirstConsumer   true                   17h
+```
+
+2. `mongo-pvc` Persistent Volume Claim:
+
+The `mongo-pvc.yml` file claims the storage create above and mounts onto the `mongo` container. Kops creates a default `StorageClass` set where our PVC will reside.
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+```
+
+The Persistent Volume Claim will show that the volume status is now changed to **Bound** when the scripts are complete.
+
+```shell
+$ kubectl get pv && kubectl get pvc
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM               STORAGECLASS    REASON   AGE
+mongo-pv                                   256Mi      RWO            Retain           Available                       default                  17h
+pvc-ee7ae28d-a7ad-478e-ba5f-038aa830b1b2   1Gi        RWO            Delete           Bound       default/mongo-pvc   kops-ssd-1-17            17h
+NAME        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+mongo-pvc   Bound    pvc-ee7ae28d-a7ad-478e-ba5f-038aa830b1b2   1Gi        RWO            kops-ssd-1-17   17h
+```
+
+3. `mongo` Deployment: 
+
+The `mongo-deployment.yml` file is where we define the mongo deployment that creates a single instance of a MongoDB database. Here, we'll expose the native port `27017`, which other pods can access. The persistent volume will then proceed to mount onto a directory inside the container.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: storage
+              mountPath: /data/db
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
+```
+
+4. `mongo` Service:
+
+This service, defined by `mongo-svc.yml`, is set as a ClusterIP(default type of Service in Kubernetes). This service makes the mongo pod accessible from within the cluster but not from outside. The only resource that should have access to the MongoDB database is the payment app.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+spec:
+  selector:
+    app: mongo
+  ports:
+    - port: 27017
+```
+
+5. `payment-app` Deployment:
+
+The `payment-app-deployment.yml` file defines the deployment of our app running in a pod on any worker node. The `spec` section defines the pod where we specify the image to be pulled and run. Port `5000` of the pod is exposed.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-app
+  labels:
+    app: payment-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-app
+  template:
+    metadata:
+      labels:
+        app: payment-app
+    spec:
+      containers:
+        - name: payment-app
+          image: ctgraves16/paymentapp-python:1.0.0
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
+```
+
+6. `payment-app` Load Balancer Service:
+
+The LoadBalancer Service enables the pods in a deployment to be accessible from outside the cluster. Here, since we are using a custom Kubernetes cluster, we will be accessing the app from the master node at `<service-ip>:<service-port>`. The `payment-app-svc.yml` file defines this service. The advantage of using a Service is that it gives us a single consistent IP to access our app as many pods may come and go in our deployment.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-app-svc
+spec:
+  selector:
+    app: payment-app
+  ports:
+    - port: 8080
+      targetPort: 5000
+  type: LoadBalancer
+```
+
+Here, port `8080` of the service `payment-app-svc` is bound to port 5000 of the pods attached.
+
+```shell
+$ kubectl get svc payment-app-svc
+NAME              TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT(S)          AGE
+payment-app-svc   LoadBalancer   100.66.62.244   ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com   8080:30164/TCP   17h
+```
+
+Now, we can access the payment app at the ELB address:
+
+```shell
+vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
+{
+  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
+}
+vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
+{
+  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-2bk98 pod!"
+}
+vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
+{
+  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
+}
+vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
+{
+  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-2bk98 pod!"
+}
+vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
+{
+  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
+}
+vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
+{
+  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-6n4kg pod!"
+}
+```
+
+We can see that the LoadBalancer sends the traffic to any random pod each time we try to access our app.
+
+7. `payment-app` Ingress
+
+The Ingress service allows external interfaces with the payment app using a single load balancer provided by the NGINX Ingress Controller created when Ansible deployed the Helm chart onto the cluster. We will create a domain name at [easypay.ctgkube.com](http://easypay.ctgkube.com/).
+
+```yaml
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: payment-app-ingress
+  annotations:
+spec:
+  rules:
+  - host: easypay.ctgkube.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-app-svc
+            port:
+              number: 8080
+```
+
+> 👉🏾 **NOTE**: The Ingress resource defines rules that redirect anything for easypay.ctgkube.com to payment-app-svc. Any request that doesn't match the rule returns a 404 "Not Found" error message.
+
+If we describe the Ingress, you'll receive a message similar to the following:
+
+```shell
+$ kubectl describe ingress
+Name:             payment-app-ingress
+Namespace:        default
+Address:          ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host                 Path  Backends
+  ----                 ----  --------
+  easypay.ctgkube.com  
+                       /   payment-app-svc:8080 (100.117.243.5:5000,100.125.236.198:5000,100.125.236.199:5000)
+Annotations:           <none>
+Events:                <none>
+```
+
+You can test the NGINX Ingress Controller using the DNS URL of the ELB load balancer:
+
+```shell
+$ curl -I http://ab58e1ce3xxxxxxx-8xxxx960.us-east-1.elb.amazonaws.com/
+HTTP/1.1 404 Not Found
+Date: Sat, 21 Aug 2021 21:11:28 GMT
+Content-Type: text/html
+Content-Length: 146
+Connection: keep-alive
+```
+
+The default server returns a **"Not Found"** page with a 404 status code for all the requests for domains where no Ingress rules are defined. Based on the prescribed rules, the Ingress Controller doesn't divert traffic to the specified backend service unless the request matches the configuration. Because the host field configures for the Ingress object, you must supply the Host header of the request with the same hostname.
+
+```shell
+$ curl -I -H "Host: easypay.ctgkube.com" http://ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com/
+HTTP/1.1 200 OK
+Date: Sat, 21 Aug 2021 21:17:46 GMT
+Content-Type: application/json
+Content-Length: 104
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+```
+
+8. `payment-app` Horizontal Pod Autoscaler
+
+One of the design requirements is to enable the cluster to scale up whenever the CPU utilization exceeds 50%. An HPA resource is at the pod level, and it scales the pods in a deployment or replica set. It implements as a Kubernetes API resource and a controller. The controller manager queries the resource utilization against the metrics specified in each HorizontalPodAutoscaler definition. It obtains the metrics from either the resource metrics API (for per-pod resource metrics) or the custom metrics API (for all other metrics).
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: payment-app-hpa
+spec:
+  maxReplicas: 10
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: payment-app
+  targetCPUUtilizationPercentage: 50
+```
+
+## Testing the payment application with Load testing tools
+
+Now that the complete application setup is ready, we can interact with the Flask app at `easypay.ctgkube.com`.
+
+![payment-app-kubernetes](img/payment-app-kubernetes.png)
+
+We can try all the API methods specified in the app to interact with the data from the command line.
+
+```shell
+$ curl http://easypay.ctgkube.com
+{
+  "message": "Welcome to the EasyPay app. I am running inside the payment-app-99695c66b-dv776 pod!"
+}
+
+$ curl http://easypay.ctgkube.com/payments
+{
+  "data": [ 
+    {
+      "id": "61207498207b153038b3b0b3", 
+      "payment": "00.00"
+    }, 
+    {
+      "id": "612074b5207b153038b3b0b4", 
+      "payment": "500.00"
+    }, 
+    {
+      "id": "612074df879dd6b7458ac593", 
+      "payment": "99.99"
+    }, 
+    {
+      "id": "61207582879dd6b7458ac594", 
+      "payment": "199.99"
+    }
+  ]
+}
+
+$ curl -X POST -d "{\"payment\": \"19.99\"}" http://easypay.ctgkube.com/payments
+{
+  "message": "Payment saved successfully to your account!"
+}
+
+$ curl -X DELETE easypay.ctgkube.com/payments/61217595207b153038b3b0b6
+{
+  "message": "Payment deleted successfully!"
+}
+
+$ curl easypay.ctgkube.com/payments
+{
+  "data": [
+    {
+      "id": "61206c7864a10df0ec229aca", 
+      "payment": "29.99"
+    }, 
+    {
+      "id": "61206c8764a10df0ec229acb", 
+      "payment": "2000.00"
+    }, 
+    {
+      "id": "612074b5207b153038b3b0b4", 
+      "payment": "500.00"
+    }, 
+    {
+      "id": "61207573207b153038b3b0b5", 
+      "payment": "99.99"
+    }, 
+    {
+      "id": "61207582879dd6b7458ac594", 
+      "payment": "199.99"
+    }
+  ]
+}
+
+$ curl -X POST easypay.ctgkube.com/payments/delete
+{
+  "message": "All Payments deleted!"
+}
+
+$ curl easypay.ctgkube.com/payments
+{
+  "data": []
+}
+```
+
+![easypay.ctgkube.com-payments](img/easypay.ctgkube.com-payments.png)
+
+![default-deployments-kubernetes-dashboard](img/default-deployments-kubernetes-dashboard.png)
+
+### Installing the Metrics server
+
+From the repository, we have the resource files stored in the `kubernetes/metrics-server` folder. Run the `kubectl apply -f.` to deploy all the resources at the same time.
+
+```shell
+~ ansible-kops/kubernetes/metrics-server
+
+$ ls -l
+total 32
+-rw-rw-r-- 1 vagrant vagrant  410 Aug 19 14:44 aggregated-metrics-reader.yaml
+-rw-rw-r-- 1 vagrant vagrant  316 Aug 19 14:44 auth-delegator.yaml
+-rw-rw-r-- 1 vagrant vagrant  338 Aug 19 14:44 auth-reader.yaml
+-rw-rw-r-- 1 vagrant vagrant  307 Aug 19 14:44 metrics-apiservice.yaml
+-rw-rw-r-- 1 vagrant vagrant 1002 Aug 19 14:44 metrics-server-deployment.yaml
+-rw-rw-r-- 1 vagrant vagrant  307 Aug 19 14:44 metrics-server-service.yaml
+-rw-rw-r-- 1 vagrant vagrant  563 Aug 19 14:44 resource-reader.yaml
+-rwxrwxr-x 1 vagrant vagrant  695 Aug 19 14:44 rm-metrics-server.sh
+
+$ kubectl apply -f.
+clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader created
+clusterrolebinding.rbac.authorization.k8s.io/metrics-server:system:auth-delegator created
+rolebinding.rbac.authorization.k8s.io/metrics-server-auth-reader created
+Warning: apiregistration.k8s.io/v1beta1 APIService is deprecated in v1.19+, unavailable in v1.22+; use apiregistration.k8s.io/v1 APIService
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io created
+serviceaccount/metrics-server created
+deployment.apps/metrics-server created
+service/metrics-server created
+clusterrole.rbac.authorization.k8s.io/system:metrics-server created
+clusterrolebinding.rbac.authorization.k8s.io/system:metrics-server created
+
+$ kubectl get pods -n kube-system
+NAME                                                      READY   STATUS    RESTARTS   AGE
+calico-kube-controllers-78d6f96c7b-c4pjk                  1/1     Running   0          20h
+calico-node-4bjcm                                         1/1     Running   0          20h
+calico-node-74m42                                         1/1     Running   0          20h
+calico-node-gnrh2                                         1/1     Running   0          20h
+calico-node-sbfzl                                         1/1     Running   0          20h
+coredns-autoscaler-6f594f4c58-k8xpx                       1/1     Running   0          20h
+coredns-f45c4bf76-m6d9g                                   1/1     Running   0          20h
+coredns-f45c4bf76-tk77l                                   1/1     Running   0          20h
+dns-controller-64f8b56bdc-k82kx                           1/1     Running   0          20h
+etcd-manager-events-ip-172-20-42-157.ec2.internal         1/1     Running   0          20h
+etcd-manager-main-ip-172-20-42-157.ec2.internal           1/1     Running   0          20h
+kops-controller-8kp2r                                     1/1     Running   0          20h
+kube-apiserver-ip-172-20-42-157.ec2.internal              2/2     Running   1          20h
+kube-controller-manager-ip-172-20-42-157.ec2.internal     1/1     Running   0          20h
+kube-proxy-ip-172-20-125-204.ec2.internal                 1/1     Running   0          20h
+kube-proxy-ip-172-20-42-157.ec2.internal                  1/1     Running   0          20h
+kube-proxy-ip-172-20-50-137.ec2.internal                  1/1     Running   0          20h
+kube-proxy-ip-172-20-81-89.ec2.internal                   1/1     Running   0          20h
+kube-scheduler-ip-172-20-42-157.ec2.internal              1/1     Running   0          20h
+kube2iam-9tfsx                                            1/1     Running   0          20h
+kube2iam-m8ls4                                            1/1     Running   0          20h
+kube2iam-xnp8z                                            1/1     Running   0          20h
+metrics-server-6fcb6cbf6f-mrsgl                           1/1     Running   0          19h
+nginx-ingress-ingress-nginx-controller-84bf68bdd7-shkj4   1/1     Running   0          20h
+
+$ kubectl get svc -n kube-system
+NAME                                               TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)                      AGE
+kube-dns                                           ClusterIP      100.64.0.10      <none>                                                                   53/UDP,53/TCP,9153/TCP       20h
+metrics-server                                     ClusterIP      100.68.52.42     <none>                                                                   443/TCP                      19h
+nginx-ingress-ingress-nginx-controller             LoadBalancer   100.64.25.22     ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com   80:32111/TCP,443:30841/TCP   20h
+nginx-ingress-ingress-nginx-controller-admission   ClusterIP      100.69.127.174   <none>                                                                   443/TCP                      20h
+```
+
+
+
+### Testing the payment app HPA
+
+Before installing and running an open-source load testing generator to test the `payment-app-hpa`, let's run the `kubectl describe hpa` to see all the conditions affecting the HorizontalPodAutoscaler.
+
+```shell
+$ kubectl describe hpa
+Name:                                                  payment-app-hpa
+Namespace:                                             default
+Labels:                                                <none>
+Annotations:                                           <none>
+CreationTimestamp:                                     Sat, 21 Aug 2021 02:54:24 +0000
+Reference:                                             Deployment/payment-app
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  1% (1m) / 50%
+Min replicas:                                          3
+Max replicas:                                          10
+Deployment pods:                                       3 current / 3 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  True    TooFewReplicas    the desired replica count is less than the minimum replica count
+Events:
+  Type     Reason                        Age                From                       Message
+  ----     ------                        ----               ----                       -------
+  Normal   SuccessfulRescale             22m (x2 over 19h)  horizontal-pod-autoscaler  New size: 3; reason: Current number of replicas below Spec.MinReplicas
+  Warning  FailedGetResourceMetric       21m (x4 over 22m)  horizontal-pod-autoscaler  failed to get cpu utilization: did not receive metrics for any ready pods
+  Warning  FailedComputeMetricsReplicas  21m (x4 over 22m)  horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: did not receive metrics for any ready pods
+```
+
+For our load testing tool, we will use **Apache bench**. Apache bench (also called Apache benchmark) is a helpful load testing tool for websites that run on Apache webserver. It is easy to install and allows you to simulate & test different kinds of website loads to enable your website to cope with real-world situations.
+
+For Ubuntu 20.04, the following command will install Apache bench:
+
+```shell
+sudo apt-get install apache2-utils -y
+```
+
+Once installed, you can directly use it for load testing. Here's the syntax for Apache bench.
+
+```shell
+$ ab <OPTIONS> <WEB_SERVER_ADDRESS>/<PATH>
+```
+
+Using the above command, we will specify the address from the `easypay-payment-ingress` at `easypay.ctgkube.com`. We will simulate 100,000 requests with 1000 concurrent connections to see how it will scale like it would be if it were in production.
+
+```
+$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+external-dns-7ff5ccbb48-p8wdd   1/1     Running   0          20h
+mongo-786f4cb565-dr62t          1/1     Running   0          19h
+payment-app-767748b689-4vl9t    1/1     Running   0          40m
+payment-app-767748b689-6vbhw    1/1     Running   0          40m
+payment-app-767748b689-pkwnz    1/1     Running   0          40m
+
+$ kubectl top pods --use-protocol-buffers
+NAME                            CPU(cores)   MEMORY(bytes)   
+external-dns-7ff5ccbb48-p8wdd   1m           16Mi            
+mongo-786f4cb565-dr62t          9m           71Mi            
+payment-app-767748b689-4vl9t    1m           23Mi            
+payment-app-767748b689-6vbhw    1m           23Mi            
+payment-app-767748b689-pkwnz    1m           23Mi
+
+$ ab -n 100000 -c 1000 http://easypay.ctgkube.com/payments
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking easypay.ctgkube.com (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        
+Server Hostname:        easypay.ctgkube.com
+Server Port:            80
+
+Document Path:          /payments
+Document Length:        340 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   212.537 seconds
+Complete requests:      100000
+Failed requests:        76
+   (Connect: 0, Receive: 0, Length: 76, Exceptions: 0)
+Total transferred:      49964000 bytes
+HTML transferred:       33975520 bytes
+Requests per second:    470.51 [#/sec] (mean)
+Time per request:       2125.374 [ms] (mean)
+Time per request:       2.125 [ms] (mean, across all concurrent requests)
+Transfer rate:          229.57 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0  630 1540.3    208   65609
+Processing:    95  897 2306.1    254   99451
+Waiting:        0  834 1647.1    248   99451
+Total:        189 1527 2762.2    865  100599
+
+Percentage of the requests served within a certain time (ms)
+  50%    865
+  66%   1395
+  75%   1519
+  80%   1884
+  90%   3392
+  95%   4694
+  98%   7501
+  99%  10187
+ 100%  100599 (longest request)
+```
+
+The auto-scaling functionality, as we can see, was successful once Apache bench completed all the requests. The replica set went from 3 `payment-app` pods running in service to 10 to handle 96% CPU utilization, exceeding the 50% threshold.
+
+```shell
+$ kubectl top pods --use-protocol-buffers
+NAME                            CPU(cores)   MEMORY(bytes)   
+external-dns-7ff5ccbb48-p8wdd   1m           17Mi            
+mongo-786f4cb565-dr62t          129m         97Mi            
+payment-app-767748b689-2r54p    170m         24Mi            
+payment-app-767748b689-46hzw    169m         25Mi            
+payment-app-767748b689-4vl9t    177m         31Mi            
+payment-app-767748b689-6vbhw    174m         25Mi            
+payment-app-767748b689-g6l7c    180m         25Mi            
+payment-app-767748b689-pkwnz    177m         31Mi            
+payment-app-767748b689-q6b7l    170m         24Mi            
+payment-app-767748b689-s42wl    173m         25Mi            
+payment-app-767748b689-sjwm2    170m         24Mi            
+payment-app-767748b689-xkpct    180m         25Mi
+
+$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+external-dns-7ff5ccbb48-p8wdd   1/1     Running   0          20h
+mongo-786f4cb565-dr62t          1/1     Running   0          20h
+payment-app-767748b689-2r54p    1/1     Running   0          77s
+payment-app-767748b689-46hzw    1/1     Running   0          92s
+payment-app-767748b689-4vl9t    1/1     Running   0          49m
+payment-app-767748b689-6vbhw    1/1     Running   0          48m
+payment-app-767748b689-g6l7c    1/1     Running   0          92s
+payment-app-767748b689-pkwnz    1/1     Running   0          48m
+payment-app-767748b689-q6b7l    1/1     Running   0          77s
+payment-app-767748b689-s42wl    1/1     Running   0          92s
+payment-app-767748b689-sjwm2    1/1     Running   0          77s
+payment-app-767748b689-xkpct    1/1     Running   0          77s
+```
+![hpa-deployments-kubernetes-dashboard](img/hpa-deployments-kubernetes-dashboard.png)
