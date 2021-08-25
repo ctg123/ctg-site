@@ -718,6 +718,9 @@ We can see that the LoadBalancer sends the traffic to any random pod each time w
 
 The Ingress service allows external interfaces with the payment app using a single load balancer provided by the NGINX Ingress Controller created when Ansible deployed the Helm chart onto the cluster. We will create a domain name at [easypay.ctgkube.com](http://easypay.ctgkube.com/).
 
+![payment-app-ingress](img/payment-app-ingress.png)
+
+
 ```yaml
 ---
 apiVersion: networking.k8s.io/v1
