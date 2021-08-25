@@ -175,7 +175,7 @@ ansible [core 2.11.3]
 
 The ansible packages for Kops & Kubectl are compatible with Linux-AMD64 and Darwin-AMD64 architectures. The following diagram is a visual respentation of the infrastructure we will deploy to AWS.
 
-![aws-kops-ansible](img/aws-kops-ansible.png)
+![aws-kops-ansible](img/aws-kops-ansible-1.png)
 
 ### AWS account
 
