@@ -225,9 +225,8 @@ example.mydomain.com.      0         NS      ns-yyy.awsdns-yy.org
 We'll use the Route53 DNS plugin for Certbot. This plugin automates completing a DNS-01 challenge (DNS01) by creating and subsequently removing TXT records using the Amazon Web Services Route 53 API. My example is for my registered domain. To initiate a DNS challenge, please execute the following command:
 
 ```shell
-# Set up your domain
-# Initiate a dns01 challenge using certbot-dns-route53
-# This task is optional if you've already done this before
+$ python3 -m pip install certbot-dns-route53 --user
+
 $ certbot certonly --dns-route53 -d ctgkube.com \
 --config-dir ~/.config/letsencrypt \
 --logs-dir /tmp/letsencrypt \
@@ -351,7 +350,7 @@ We'll produce a simple RESTful API to create, read, update, and delete (CRUD) pa
 
 By default, when a MongoDB Server instance starts on a machine, it listens to port `27017`. The Flask-PyMongo module helps us to bridge Flask and MongoDB and provides some convenience helpers. An objectId module is a tool for working with MongoDB ObjectId, the default value of _id field of each document, generated during the creation of any document.
 
-The `app.py` which can run on any host (python app.py), can be accessed at `http://localhost:5000/` inside it. 
+The `app.py` which can run on any host (python app.py), can be accessed at `http://localhost:5000/`. 
 
 ```python
 from flask import Flask, request, jsonify
@@ -444,7 +443,7 @@ if __name__ == "__main__":
 
 We first import all the required modules and create instances of the Flask class (the app) and the PyMongo class (the database). Note that the hostname in the `MONGO_URI` Flask configuration variable defines the mongo instead of localhost. Mongo will be the name of our database container, and containers in the same Docker network can talk to each other by their names.
 
-Our app consists of six functions which are assigned URLs by @app.route() Python decorator. At first glance, it is easy to understand that the decorator is telling our app that executes the underlying function whenever a user visits our @app domain at the given route().
+Our app consists of six functions which are assigned URLs by @app.route() Python decorator. At first glance, it is easy to understand that the decorator is telling our app to execute the underlying function whenever a user visits our @app domain at the given route().
 
 * `index()` - displays a welcome message for the app. It Also displays the hostname of the machine where our app is running. This is useful to understand that we will be hitting a random pod each time we try to access our app on Kubernetes.
 * `get_all_payments()` - displays all the payments that are available in the database as a list of dictionaries.
@@ -457,7 +456,7 @@ In the final section, where we run the app, we define the host parameter as **'0
 
 ### Containerizing the application
 
-Once you have Docker installed locally, we will store our images to Docker Hub. Use the `docker login` command to authorize Docker to connect to your `Docker Hub` account.
+Once you have Docker installed locally, we will store our images to Docker Hub. Use the `docker login` command to authorize Docker to connect to your Docker Hub account.
 
 Let's build a Docker image of the app to push to the Docker Hub registry. In the directory `payment-app`, a `Dockerfile` with the following contents to create the image:
 
@@ -683,7 +682,7 @@ NAME              TYPE           CLUSTER-IP      EXTERNAL-IP                    
 payment-app-svc   LoadBalancer   100.66.62.244   ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com   8080:30164/TCP   17h
 ```
 
-Now, we can access the payment app at the ELB address:
+We are now able to access the payment app at the ELB address:
 
 ```shell
 vagrant@ansible-controller:~/ansible-kops/kubernetes$ curl http://ac0a73109d80b449d8b2094246ab3e18-1598075260.us-east-1.elb.amazonaws.com:8080
@@ -892,7 +891,7 @@ $ curl easypay.ctgkube.com/payments
 
 ### Installing the Metrics server
 
-From the repository, we have the resource files stored in the `kubernetes/metrics-server` folder. Run the `kubectl apply -f.` to deploy all the resources at the same time.
+Within the `ansible-kops` repository, we have the metrics server resource files stored in the `kubernetes/metrics-server` folder. Run the `kubectl apply -f.` to deploy all the resources at the same time.
 
 ```shell
 ~ ansible-kops/kubernetes/metrics-server
@@ -1123,3 +1122,8 @@ payment-app-767748b689-sjwm2    1/1     Running   0          77s
 payment-app-767748b689-xkpct    1/1     Running   0          77s
 ```
 ![hpa-deployments-kubernetes-dashboard](img/hpa-deployments-kubernetes-dashboard.png)
+
+## Conclusion
+
+Wow, this was quite a project! If you made it this far, congratulations! You have a fully capable microservices application deployed to a Highly Available Kubernetes cluster 👏🏾 
+If you enjoyed this project or any suggestions, leave a comment below, your feedback is always welcome. 
