@@ -18,7 +18,7 @@ categories:
   - Cloud-Native
   - CM-Tools
   - Python
-external_link: https://www.chaancegraves.com/project/optimizing-a-flask-api-microservice-with-kubernetes/
+external_link: 
 links:
   - url: https://github.com/ctg123/ansible-kops
     icon_pack: fas
@@ -612,7 +612,7 @@ spec:
 
 4. `mongo` Service:
 
-This service, defined by `mongo-svc.yml`, is set as a ClusterIP(default type of Service in Kubernetes). This service makes the mongo pod accessible from within the cluster but not from outside. The only resource that should have access to the MongoDB database is the payment app.
+This service, defined by `mongo-svc.yml`, is set as a ClusterIP (default type of Service in Kubernetes). This service makes the mongo pod accessible from within the cluster but not from outside. The only resource that should have access to the MongoDB database is the payment app.
 
 ```yaml
 apiVersion: v1
@@ -949,8 +949,6 @@ metrics-server                                     ClusterIP      100.68.52.42  
 nginx-ingress-ingress-nginx-controller             LoadBalancer   100.64.25.22     ab58e1ce3541e475f8365c9ddfcd4496-883895960.us-east-1.elb.amazonaws.com   80:32111/TCP,443:30841/TCP   20h
 nginx-ingress-ingress-nginx-controller-admission   ClusterIP      100.69.127.174   <none>                                                                   443/TCP                      20h
 ```
-
-
 
 ### Testing the payment app HPA
 
