@@ -203,6 +203,8 @@ Default output format [None]: json
 
 ### Register your Domain
 
+---
+
 You must own a registered domain to complete the Kubernetes cluster deployment by using either method(s) seen below
 
 1. New Domain: [Register a new domain](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-register.html) using AWS Route53.
@@ -221,6 +223,8 @@ example.mydomain.com.      0         NS      ns-yyy.awsdns-yy.org
 ```
 
 ### Certbot
+
+---
 
 We'll use the Route53 DNS plugin for Certbot. This plugin automates completing a DNS-01 challenge (DNS01) by creating and subsequently removing TXT records using the Amazon Web Services Route 53 API. My example is for my registered domain. To initiate a DNS challenge, please execute the following command:
 
@@ -346,6 +350,8 @@ $ pip list
 
 ### Creating the Flask Payment application
 
+---
+
 We'll produce a simple RESTful API to create, read, update, and delete (CRUD) payment entries. The app will store the data in a MongoDB database, an open-source database that stores flexible JSON-like documents that is Non-relational (often called NoSQL databases).
 
 By default, when a MongoDB Server instance starts on a machine, it listens to port `27017`. The Flask-PyMongo module helps us to bridge Flask and MongoDB and provides some convenience helpers. An objectId module is a tool for working with MongoDB ObjectId, the default value of _id field of each document, generated during the creation of any document.
@@ -456,6 +462,8 @@ In the final section, where we run the app, we define the host parameter as **'0
 
 ### Containerizing the application
 
+---
+
 Once you have Docker installed locally, we will store our images to Docker Hub. Use the `docker login` command to authorize Docker to connect to your Docker Hub account.
 
 Let's build a Docker image of the app to push to the Docker Hub registry. In the directory `payment-app`, a `Dockerfile` with the following contents to create the image:
@@ -504,6 +512,8 @@ $ docker run --name=paymentapp-python --rm -p 5000:5000 -d --network=payment-app
 ![payment-app-localhost](img/payment-app-localhost.png)
 
 ### Deploy the application and MongoDB database to Kubernetes
+
+---
 
 We can check on how the nodes are set up by running `kubectl get nodes`.
 
@@ -891,6 +901,8 @@ $ curl easypay.ctgkube.com/payments
 
 ### Installing the Metrics server
 
+---
+
 Within the `ansible-kops` repository, we have the metrics server resource files stored in the `kubernetes/metrics-server` folder. Run the `kubectl apply -f.` to deploy all the resources at the same time.
 
 ```shell
@@ -955,6 +967,8 @@ nginx-ingress-ingress-nginx-controller-admission   ClusterIP      100.69.127.174
 ```
 
 ### Testing the payment app HPA
+
+---
 
 ![kops-hpa-ca-architecture](img/kops-hpa-ca-architecture.png)
 
