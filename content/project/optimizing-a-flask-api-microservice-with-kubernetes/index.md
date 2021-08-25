@@ -1078,15 +1078,19 @@ Percentage of the requests served within a certain time (ms)
  100%  100599 (longest request)
 ```
 
-The auto-scaling functionality, as we can see, was successful once Apache bench completed all the requests. The `kubectl get hpa -w` command monitors the performance of the cluster deployments in real time. The replica set went from 3 `payment-app` pods running in service to 10 to handle a 250% or higher CPU utilization, which exceeds the 50% threshold.
+The auto-scaling functionality, as we can see, was successful once Apache bench completed all the requests. The `kubectl get hpa -w` command monitors the performance of the cluster deployments in real time. The replica set went from 3 `payment-app` pods running in service to 10 to handle a 500% or higher CPU utilization, which exceeds the 50% threshold. Once the load decreases, the replica set will scale back down to its orginal state of 3.
 
 ```shell
 $ kubectl get hpa -w
 NAME              REFERENCE                TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
-payment-app-hpa   Deployment/payment-app   1%/50%    3         10        10         4d4h
-payment-app-hpa   Deployment/payment-app   251%/50%   3         10        10         4d4h
-payment-app-hpa   Deployment/payment-app   195%/50%   3         10        10         4d4h
+payment-app-hpa   Deployment/payment-app   1%/50%    3         10        3          4d4h
+payment-app-hpa   Deployment/payment-app   559%/50%   3         10        3          4d4h
+payment-app-hpa   Deployment/payment-app   559%/50%   3         10        6          4d4h
+payment-app-hpa   Deployment/payment-app   559%/50%   3         10        10         4d4h
+payment-app-hpa   Deployment/payment-app   247%/50%   3         10        10         4d4h
 payment-app-hpa   Deployment/payment-app   1%/50%     3         10        10         4d4h
+payment-app-hpa   Deployment/payment-app   1%/50%     3         10        10         4d5h
+payment-app-hpa   Deployment/payment-app   1%/50%     3         10        3          4d5h
 
 $ kubectl top pods --use-protocol-buffers
 NAME                            CPU(cores)   MEMORY(bytes)   
