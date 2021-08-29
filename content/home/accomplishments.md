@@ -50,6 +50,15 @@ item:
   organization_url: https://www.valleyml.ai
   title: 'ValleyML AI Expo 2020'
   url: ""
+  
+- certificate_url: https://success.simplilearn.com/bbd6f900-6c9d-4a47-a984-a5570f71210a#gs.9kmw4e
+  date_end: "2021-08-29"
+  date_start: "2020-09-23"
+  description: "This immersive program,jointly designed by Caltech CTME and Simplilearn, prepared me to develop cloud-native and mobile applications, modernized architectures, and expertise in agile software engineering operations. "
+  organization: Caltech CTME
+  organization_url: https://ctme.caltech.edu/programs-for-individuals/software-engineering-open/devops-pgp
+  title: 'Post Graduate Program in DevOps'
+  url: "https://ctme.caltech.edu/programs-for-individuals/software-engineering-open/devops-pgp"
 
 - certificate_url: https://www.credential.net/29593488-d22c-407c-abec-229bd5351356#gs.9ke8oe
   date_end: "2018-07-20"
