@@ -28,12 +28,12 @@ feature:
 - icon: "c-programming"
   icon_pack: "custom"
   name: C/C++
-  description: Proficient
+  description: Basic
 
 - icon: node-js
   icon_pack: fab
   name: Node.js
-  description: Basic
+  description: Proficient
 
 - icon: java
   icon_pack: fab
@@ -55,9 +55,9 @@ feature:
   name: Git
   description: Proficient
 
-- icon: jenkins
-  icon_pack: fab
-  name: Jenkins (CI/CD)
+- icon: infinity
+  icon_pack: far
+  name: CI/CD
   description: Basic
 
 - icon: docker
@@ -68,7 +68,7 @@ feature:
 - icon: aws
   icon_pack: fab
   name: Amazon Web Services
-  description: Basic
+  description: Proficient
 
 - icon: "mobo-design"
   icon_pack: "custom"
