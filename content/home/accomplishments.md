@@ -42,7 +42,7 @@ item:
   title: Ungraduate Reseach Shcolars (Thesis)
   url: https://www.scribd.com/document/489491834/Chaance-Graves-URSP-Thesis?secret_password=eT0mcveqyiEWCNECCyH1
 
-- certificate_url: https://www.scribd.com/document/489492563/AI-Expo-IEEE-PDH-certificate?secret_password=2n5CayA6h9LUbPld1LY6
+- certificate_url: https://www.credential.net/e61b49cd-85e1-4aa7-8480-d38e6299dff8#gs.9jshdm
   date_end: "2020-11-19"
   date_start: "2020-09-01"
   description: "Virtual and global series of presentations and discussions centered around the evolution and practical applications of Enterprise AI, AI Robotics, and AI Hardware, etc."
@@ -51,7 +51,7 @@ item:
   title: 'ValleyML AI Expo 2020'
   url: ""
 
-- certificate_url: https://www.scribd.com/document/489613627/MIT-AI-Business-Strategy?secret_password=4VvgMDqInQU5yqUt2Dxg
+- certificate_url: https://www.credential.net/29593488-d22c-407c-abec-229bd5351356#gs.9ke8oe
   date_end: "2018-07-20"
   date_start: "2018-05-30"
   description: "This certification covers in depth business strategies of how AI impacts various industries, the current innovations and future of Artificial Intelligence."
