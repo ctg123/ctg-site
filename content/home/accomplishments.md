@@ -54,7 +54,18 @@ item:
 - certificate_url: https://success.simplilearn.com/bbd6f900-6c9d-4a47-a984-a5570f71210a#gs.9kmw4e
   date_end: "2021-08-29"
   date_start: "2020-09-23"
-  description: "This immersive program,jointly designed by Caltech CTME and Simplilearn, prepared me to develop cloud-native and mobile applications, modernized architectures, and expertise in agile software engineering operations. "
+  description: "This immersive program, jointly designed by Caltech CTME and Simplilearn, prepared me to develop cloud-native and mobile applications, modernized architectures, and expertise in agile software engineering operations.
+  Skills covered throughout the duration of the program:
+ 
+    • DevOps Methodology
+    • Version Control 
+    • Continuous Integration 
+    • Continuous Delivery 
+    • Configuration Management 
+    • Containerization 
+    • Continuous Deployment 
+    • Testing 
+    • Cloud-native DevOps "
   organization: Caltech CTME
   organization_url: https://ctme.caltech.edu/programs-for-individuals/software-engineering-open/devops-pgp
   title: 'Post Graduate Program in DevOps'
