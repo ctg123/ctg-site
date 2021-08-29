@@ -56,7 +56,7 @@ feature:
   description: Proficient
 
 - icon: infinity
-  icon_pack: far
+  icon_pack: fas
   name: CI/CD
   description: Basic
 
