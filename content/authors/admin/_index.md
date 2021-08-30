@@ -52,6 +52,6 @@ I currently work at Intel Corporation, based at their Santa Clara campus in Sili
 
 I provide technical support and expertise for Intel server CPUs and server board design development for customers such as [Facebook](https://engineering.fb.com/category/data-center-engineering/), [Google](https://www.google.com/about/datacenters/), [Amazon Web Services](https://aws.amazon.com/compliance/data-center/data-centers/), etc. My primary OEM customer designs cloud computing server systems for Verizon Media (formerly Yahoo!), Apple, Dropbox, and Amazon Web Services (AWS).
 
-My journey has allowed me to serve customers and colleagues within the tech industry from different geographic regions globally, including U.S., Mexico, China, Taiwan, and Japan. I’ve also served as an Intel recruiting representative for the Datacenter Group for my Alma mater Texas A&M University, Prairie View, and [NSBE](https://www.nsbe.org/intro/index.html) annual conventions.
+My journey has allowed me to serve customers and colleagues within the tech industry from different geographic regions globally, including U.S., Mexico, China, Taiwan, and Japan. I’ve also served as an Intel recruiting representative for the Datacenter Group for my Alma mater Texas A&M University, Prairie View, and [NSBE](https://www.nsbe.org/) annual conventions.
 
 I mentor high school students from underrepresented communities in Oakland, CA, to teach and inspire them to pursue careers in STEM. I always strive to advocate and give back to others who aspire to follow a path like mine.
