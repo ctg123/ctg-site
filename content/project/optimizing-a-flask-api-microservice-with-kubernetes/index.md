@@ -303,6 +303,8 @@ $ ansible-playbook deploy-cluster.yml --ask-become-pass
 
 It should take approximately 8 - 10 minutes to complete.
 
+[![asciicast](https://asciinema.org/a/pNnmBhhVbOkm6vFqVtPvgYbPl.svg)](https://asciinema.org/a/pNnmBhhVbOkm6vFqVtPvgYbPl)
+
 ### Install Kubernetes Dashboard
 
 A critical feature for any Kubernetes cluster is efficient monitoring of all resources with an accessible UI. The Kubernetes dashboard enables the ability to deploy containerized applications, troubleshoot pods, and manage other cluster resources such as scaling a deployment, initiating rolling updates, resetting pods instead of using the kubectl command.
