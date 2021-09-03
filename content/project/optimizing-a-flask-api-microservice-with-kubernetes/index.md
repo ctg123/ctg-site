@@ -303,7 +303,7 @@ $ ansible-playbook deploy-cluster.yml --ask-become-pass
 
 It should take approximately 8 - 10 minutes to complete.
 
-[![asciicast](https://asciinema.org/a/pNnmBhhVbOkm6vFqVtPvgYbPl.svg)](https://asciinema.org/a/pNnmBhhVbOkm6vFqVtPvgYbPl)
+{{< asciinema key="vagrantup" rows="25" preload="1" >}}
 
 ### Install Kubernetes Dashboard
 
