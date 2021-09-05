@@ -1,15 +1,13 @@
 ---
 title: Publications
-
-# View.
-#   1 = List
-#   2 = Compact
-#   3 = Card
-#   4 = Citation
 view: 4
-
-# Optional header image (relative to `static/media/` folder).
 header:
   caption: ""
   image: ""
+publication_types:
+  - "2"
+authors:
+  - ctgadget
+summary: demo
+date: 2021-09-05T17:20:33.545Z
 ---
