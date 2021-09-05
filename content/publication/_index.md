@@ -1,11 +1,11 @@
 ---
-title: Publications
+title: Notebooks
 view: 4
 header:
   caption: ""
   image: ""
 publication_types:
-  - "2"
+  - "0"
 authors:
   - ctgadget
 summary: demo
