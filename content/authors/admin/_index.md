@@ -1,5 +1,5 @@
 ---
-role: Systems Engineer
+role: Whatever the mind can conceive and believe, it can achieve. - Napoleon Hill
 bio: I'm a creative engineer and open source enthusiast. The objective of my
   portfolio/blog is to inspire all things involved in STEAM.
 interests:
@@ -22,7 +22,7 @@ social:
     icon_pack: fab
     link: https://github.com/ctg123
 organizations:
-  - name: Whatever the mind can conceive and believe, it can achieve. - Napoleon Hill
+  - name: Systems Engineer
     url: ""
 education:
   courses:
@@ -41,7 +41,7 @@ user_groups:
   - Developers
   - Students
 highlight_name: false
-title: Chaance Graves
+title: Chaance T. Graves
 email: chaance.graves@ctginnovations.io
 ---
 Greetings, ladies and gentlemen! 👋🏾
