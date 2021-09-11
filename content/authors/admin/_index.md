@@ -1,5 +1,5 @@
 ---
-role: Whatever the mind can conceive and believe, it can achieve. - Napoleon Hill
+role: Systems Engineer
 bio: I'm a creative engineer and open source enthusiast. The objective of my
   portfolio/blog is to inspire all things involved in STEAM.
 interests:
@@ -22,7 +22,7 @@ social:
     icon_pack: fab
     link: https://github.com/ctg123
 organizations:
-  - name: Systems Engineer
+  - name: '"Whatever the mind can conceive and believe, it can achieve."'
     url: ""
 education:
   courses:
