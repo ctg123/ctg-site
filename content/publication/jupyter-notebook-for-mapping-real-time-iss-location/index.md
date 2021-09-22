@@ -3,7 +3,7 @@ title: Jupyter notebook for mapping real-time ISS location
 subtitle: "👉🏾 Check the Github repo for any updates:
   https://github.com/ctg123/iss-api-map"
 publication_types:
-  - "4"
+  - "0"
 authors:
   - ctgadget
 draft: false
