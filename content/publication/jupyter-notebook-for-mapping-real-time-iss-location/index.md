@@ -20,7 +20,7 @@ This notebook is a built-in Jupyter notebook in Jupyterlab and conda environment
 
 ### Conda environment with environment.yml
 
-![https://mybinder.org/badge_logo.svg](https://mybinder.org/badge_logo.svg)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ctg123/iss-api-map/HEAD)
 
 A Binder-compatible repo with an `environment.yml` file.
 
