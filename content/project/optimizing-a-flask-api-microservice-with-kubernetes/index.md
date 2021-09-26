@@ -1143,4 +1143,4 @@ payment-app-767748b689-xkpct    1/1     Running   0          77s
 
 Wow, this was quite a project! If you made it this far, congratulations! You have a fully capable microservices application deployed to a Highly Available Kubernetes cluster 👏🏾 
 
-If you enjoyed this project or any suggestions, leave a comment below, your feedback is always welcome. 
+If you enjoyed this project or have any other suggestions, leave a comment below. Your feedback is always welcome. 
