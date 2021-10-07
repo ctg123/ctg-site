@@ -173,7 +173,7 @@ ansible [core 2.11.3]
 
 ## Environment Setup
 
-The ansible packages for Kops & Kubectl are compatible with Linux-AMD64 and Darwin-AMD64 architectures. The following diagram is a visual respentation of the infrastructure we will deploy to AWS.
+The ansible packages for Kops & Kubectl are compatible with Linux-AMD64 and Darwin-AMD64 architectures. The following diagram is a visual representation of the infrastructure we will deploy to AWS.
 
 ![aws-kops-ansible](img/aws-kops-ansible-1.png)
 
@@ -814,8 +814,6 @@ spec:
   targetCPUUtilizationPercentage: 50
 ```
 
-## Testing the payment application with Load testing tools
-
 Now that the complete application setup is ready, we can interact with the Flask app at `easypay.ctgkube.com`.
 
 ![payment-app-kubernetes](img/payment-app-kubernetes.png)
@@ -1002,6 +1000,7 @@ Events:
   Warning  FailedGetResourceMetric       21m (x4 over 22m)  horizontal-pod-autoscaler  failed to get cpu utilization: did not receive metrics for any ready pods
   Warning  FailedComputeMetricsReplicas  21m (x4 over 22m)  horizontal-pod-autoscaler  invalid metrics (1 invalid out of 1), first error is: failed to get cpu utilization: did not receive metrics for any ready pods
 ```
+## Testing the payment application with Load testing tools
 
 For our load testing tool, we will use **Apache bench**. Apache bench (also called Apache benchmark) is a helpful load testing tool for websites that run on Apache webserver. It is easy to install and allows you to simulate & test different kinds of website loads to enable your website to cope with real-world situations.
 
