@@ -1,6 +1,8 @@
 ---
 title: Monday Motivation Post
 date: 2022-02-28T17:22:04.383Z
+summary: This post shares some insightful observations to help motivate
+  innovators throughout their problem-solving process.
 draft: false
 featured: false
 image:
