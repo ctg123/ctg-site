@@ -1,5 +1,4 @@
 ---
-title: Chaance T. Graves
 role: Systems Engineer
 bio: I'm a creative engineer and open source enthusiast. The objective of my
   portfolio/blog is to inspire all things involved in STEAM.
@@ -13,9 +12,6 @@ social:
   - icon: envelope
     icon_pack: fas
     link: mailto:chaance.graves@ctginnovations.io
-  - icon: dev
-    icon_pack: fab
-    link: https://dev.to/ctg123
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/chaancegraves/
@@ -34,7 +30,6 @@ education:
     - course: Summer Study abroad program in EECS
       institution: USP, São Carlos, Brazil
       year: 2015
-email: chaance.graves@ctginnovations.io
 superuser: true
 user_groups:
   - Researchers
@@ -43,6 +38,8 @@ user_groups:
   - Developers
   - Students
 highlight_name: false
+title: Chaance T. Graves
+email: chaance.graves@ctginnovations.io
 ---
 Greetings, ladies and gentlemen! 👋🏾
 
